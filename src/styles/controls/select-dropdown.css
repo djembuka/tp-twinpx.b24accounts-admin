@@ -1,0 +1,187 @@
+.twpx-select {
+  font-family: Arial, sans-serif;
+  position: relative;
+}
+
+/* Скрываем нативный select */
+.twpx-select__native {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  z-index: 11;
+  pointer-events: none;
+}
+
+.twpx-select-container {
+  position: relative;
+}
+
+.twpx-select__input {
+  color: var(--twpx-input-text-default, #000);
+  width: 100%;
+  padding: 24px calc(16px + 32px + 16px) 8px 16px;
+  font-size: 16px;
+  border-radius: 8px;
+  background: var(--twpx-input-background-default, #F5F9FF);
+  border: 1px solid var(--twpx-input-background-default, #F5F9FF);
+  height: 64px;
+  -webkit-transition: border-color 0.2s ease;
+  transition: border-color 0.2s ease;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+}
+
+.twpx-select-container:hover .twpx-select__input {
+  border-color: var(--twpx-input-border-focus, #2900E0);
+}
+
+.twpx-select__input:focus {
+  outline: none;
+}
+
+.twpx-select-label {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: var(--twpx-input-text-default, #000);
+  background-color: transparent;
+  pointer-events: none;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  margin: 0;
+  padding: 0;
+  max-width: calc(100% - 96px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.twpx-select-icon {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.twpx-select__arrow {
+  position: absolute;
+  top: 20px;
+  right: 16px;
+  -webkit-transition: transform 0.2s ease;
+  transition: transform 0.2s ease;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.twpx-select-lock {
+  display: none;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 10;
+}
+
+/* Состояние когда поле в фокусе или имеет значение */
+.twpx-select-container.filled .twpx-select-label,
+.twpx-select-container.open .twpx-select-label {
+  color: var(--twpx-input-text-input-name, #848C95);
+  top: 16px;
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+  font-size: 12px;
+}
+
+/* Состояние открытого dropdown */
+.twpx-select-container.open .twpx-select__input {
+  border-color: var(--twpx-input-border-focus, #2900E0);
+}
+
+.twpx-select-container.open .twpx-select__arrow {
+  transform: rotate(180deg);
+}
+
+/* Dropdown стили */
+.twpx-select-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  display: none;
+  background: #FFF;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.05);
+  z-index: 100;
+}
+
+.twpx-select-container.open .twpx-select-dropdown {
+  display: block;
+}
+
+.twpx-select-option {
+  padding: 16px;
+  cursor: pointer;
+  color: var(--twpx-input-text-default, #000);
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.twpx-select-option:hover {
+    background: var(--twpx-blocks-background-block, #F9F9F9);
+}
+
+.twpx-select-option.selected {
+  font-weight: bold;
+}
+
+/* Состояние ошибки */
+.twpx-select-container.invalid .twpx-select__input {
+  background: var(--twpx-input-background-error, #FFF2F2);
+  color: var(--twpx-input-text-error, #F00);
+}
+
+.twpx-select-container.invalid:hover .twpx-select__input {
+  border-color: var(--twpx-input-border-error, #F00);
+}
+
+.twpx-select-container.invalid .twpx-select-label {
+  color: var(--twpx-input-text-error, #F00);
+}
+
+.twpx-select-container.invalid.open .twpx-select__input {
+  border-color: var(--twpx-input-border-error, #F00);
+}
+
+.twpx-select-container.invalid .twpx-select__arrow {
+  filter: brightness(0) saturate(100%) invert(19%) sepia(97%) saturate(5140%) hue-rotate(359deg) brightness(110%) contrast(116%);
+}
+
+/* Состояние disabled */
+.twpx-select-container.disabled {
+  pointer-events: none;
+}
+
+.twpx-select-container.disabled .twpx-select__input {
+  background-color: var(--twpx-input-background-disable, #F9F9F9);
+  color: var(--twpx-input-text-disable, #919191);
+  cursor: not-allowed;
+}
+
+.twpx-select-container.disabled .twpx-select-label {
+  color: var(--twpx-input-text-disable, #919191);
+}
+
+.twpx-select-container.disabled .twpx-select-lock {
+  display: block;
+}
