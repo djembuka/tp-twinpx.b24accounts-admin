@@ -35,9 +35,7 @@
 .twpx-url-input-label {
   position: absolute;
   left: calc(16px + 32px + 16px);
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
+  top: 22px;
   font-size: 16px;
   color: var(--twpx-input-text-default, #000);;
   background-color: transparent;
