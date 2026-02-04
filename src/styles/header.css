@@ -1,0 +1,50 @@
+.twpx-b24a-admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+}
+.twpx-b24a-admin-logo {
+    width: 64px;
+    height: 64px;
+}
+.twpx-b24a-admin-tabs {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 32px;
+}
+.twpx-b24a-admin-tabs__item {
+    display: flex;
+    height: 64px;
+    padding: 16px 32px;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    border-radius: 8px;
+    background: var(--Background-Light-Grey, #F9F9F9);
+    color: var(--Text, #000);
+    font-family: Arial;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    white-space: nowrap;
+    cursor: pointer;
+    -webkit-transition: opacity .2s ease;
+    transition: opacity .2s ease;
+}
+.twpx-b24a-admin-tabs__item:hover {
+    opacity: .7;
+}
+.twpx-b24a-admin-tabs__item.twpx-b24a-admin-tabs__item--current {
+    background: var(--twpx-button-color-grey, #6A6483);
+    color: var(--color-base-white, #FFF);
+}
+.twpx-b24a-admin-tabs__item .twpx-b24a-admin-tabs__icon-current,
+.twpx-b24a-admin-tabs__item.twpx-b24a-admin-tabs__item--current .twpx-b24a-admin-tabs__icon {
+    display: none;
+}
+.twpx-b24a-admin-tabs__item.twpx-b24a-admin-tabs__item--current .twpx-b24a-admin-tabs__icon-current {
+    display: block;
+}

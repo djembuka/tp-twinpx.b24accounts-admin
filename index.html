@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>b24accounts-admin</title>
+  </head>
+  <body>
+    <div id="twpxB24aAdmin">
+      <div class="twpx-b24a-admin-wrapper">
+        <div class="twpx-b24a-admin-header">
+          <img class="twpx-b24a-admin-logo" src="/images/b24a-logo.svg" width="64" height="64" alt="" />
+          <div class="twpx-b24a-admin-tabs">
+            <div class="twpx-b24a-admin-tabs__item twpx-b24a-admin-tabs__item--current">
+              <img class="twpx-b24a-admin-tabs__icon" src="/images/connection-icon.svg" width="24" height="24" alt="" />
+              <img class="twpx-b24a-admin-tabs__icon-current" src="/images/connection-current-icon.svg" width="24" height="24" alt="" />
+              Подключение</div>
+            <div class="twpx-b24a-admin-tabs__item">
+              <img class="twpx-b24a-admin-tabs__icon" src="/images/settings-icon.svg" width="24" height="24" alt="" />
+              Настройки</div>
+            <div class="twpx-b24a-admin-tabs__item">
+              <img class="twpx-b24a-admin-tabs__icon" src="/images/events-icon.svg" width="24" height="24" alt="" />
+              Пользовательские события</div>
+          </div>
+        </div>
+
+        <div class="twpx-b24a-admin-content">
+
+          <div class="twpx-b24a-admin-message twpx-b24a-admin-message--error">
+            <img class="twpx-b24a-admin-message__icon" src="/images/error-icon.svg" width="24" height="24" alt="" />
+            <span class="twpx-b24a-admin-message__text">
+              Неизвестная ошибка
+            </span>
+          </div>
+
+          <div class="twpx-b24a-admin-block">
+            <div class="twpx-b24a-admin-block__title">Подключение вашего Битрикс24</div>
+            <div class="twpx-b24a-admin-block__text">Укажите адрес вашего портала и нажмите кнопку Подключить.</div>
+            
+            <div class="twpx-b24a-url-input-wrapper">
+              <div class="twpx-b24a-url-input-container">
+                <input type="url" value="http://google.com" class="twpx-b24a-url-input">
+                <label class="twpx-b24a-url-input-label">Адрес портала Битрикс24</label>
+                <img class="twpx-b24a-url-input-icon" src="/images/url-icon.svg" width="32" height="32" alt="" />
+                <img class="twpx-b24a-url-input-clear" src="/images/clear-icon.svg" width="32" height="32" alt="" />
+                <img class="twpx-b24a-url-input-clear-invalid" src="/images/clear-invalid-icon.svg" width="32" height="32" alt="" />
+                <img class="twpx-b24a-url-input-lock" src="/images/lock-icon.svg" width="32" height="32" alt="" />
+              </div>
+            </div>
+
+            <button class="twpx-b24a-admin-button twpx-b24a--loading">
+              <img class="twpx-b24a-admin-loader" src="/images/loader-icon.svg" width="16" height="16" alt="" />
+              <span>Подключить</span>
+            </button>
+          </div>
+
+          <div class="twpx-b24a-admin-block">
+            <div class="twpx-b24a-admin-message twpx-b24a-admin-message--info">
+              <img class="twpx-b24a-admin-message__icon" src="/images/info-icon.svg" width="24" height="24" alt="" />
+              <span class="twpx-b24a-admin-message__text">
+                Сообщение информационное.
+              </span>
+            </div>
+
+            <div class="twpx-b24a-admin-block__title">Тип контакта с личным кабинетом</div>
+            <div class="twpx-b24a-admin-block__text">Выберите типы контактов, для которых будут созданы личные кабинеты.</div>
+
+            <button class="twpx-b24a-admin-button twpx-b24a--loading">
+              <img class="twpx-b24a-admin-loader" src="/images/loader-icon.svg" width="16" height="16" alt="" />
+              <span>Подключить</span>
+            </button>
+          </div>
+
+        </div>
+
+        <div class="twpx-b24a-admin-footer">
+          <img class="twpx-b24a-admin-twinpx-logo" src="/images/twinpx-logo.svg" width="150" height="22" alt="" />
+          <div class="twpx-b24a-admin-footer-links">
+            <a href="" target="_blank">Руководство по модулю</a>
+            <a href="" target="_blank">Поддержка модуля</a>
+          </div>
+          <div class="twpx-b24a-admin-footer-copyright">Модуль создан и поддерживается Twin px.  © 2025.</div>
+        </div>
+
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

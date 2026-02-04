@@ -1,0 +1,133 @@
+.twpx-b24a-url-input-wrapper {
+  font-family: Arial, sans-serif;
+}
+
+.twpx-b24a-url-input-container {
+  position: relative;
+}
+
+.twpx-b24a-url-input {
+  color: var(--twpx-input-text-default, #000);
+  width: 100%;
+  padding: 24px calc(16px + 32px + 16px) 8px calc(16px + 32px + 16px);
+  font-size: 16px;
+  border-radius: 8px;
+  background: var(--twpx-input-background-default, #F5F9FF);
+  border: 1px solid var(--twpx-input-background-default, #F5F9FF);
+  height: 64px;
+  -webkit-transition: border-color 0.2s ease;
+  transition: border-color 0.2s ease;
+}
+
+.twpx-b24a-url-input-container:hover .twpx-b24a-url-input {
+  border-color: var(--twpx-input-border-focus, #2900E0);
+}
+
+.twpx-b24a-url-input:focus {
+  outline: none;
+}
+
+.twpx-b24a-url-input-label {
+  position: absolute;
+  left: calc(16px + 32px + 16px);
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: var(--twpx-input-text-default, #000);;
+  background-color: transparent;
+  pointer-events: none;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  margin: 0;
+  padding: 0;
+}
+
+.twpx-b24a-url-input-icon {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 10;
+}
+
+.twpx-b24a-url-input-clear,
+.twpx-b24a-url-input-clear-invalid {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.twpx-b24a-url-input-lock {
+    display: none;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 10;
+}
+
+/* Состояние когда поле в фокусе или имеет значение */
+.twpx-b24a-url-input:focus + .twpx-b24a-url-input-label,
+.twpx-b24a-url-input-container.filled .twpx-b24a-url-input-label {
+  color: var(--twpx-input-text-input-name, #848C95);
+  top: 16px;
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+  font-size: 12px;
+}
+
+.twpx-b24a-url-input-clear,
+.twpx-b24a-url-input-clear-invalid {
+  opacity: 0;
+  pointer-events: none;
+  -webkit-transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease;
+}
+
+.twpx-b24a-url-input-container.filled:not(.invalid):hover .twpx-b24a-url-input-clear {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Состояние ошибки */
+.twpx-b24a-url-input-container.invalid .twpx-b24a-url-input {
+  background: var(--twpx-input-background-error, #FFF2F2);
+  color: var(--twpx-input-text-error, #F00);
+}
+
+.twpx-b24a-url-input-container.invalid:hover .twpx-b24a-url-input {
+  border-color: var(--twpx-input-border-error, #F00);
+}
+
+.twpx-b24a-url-input-container.invalid .twpx-b24a-url-input-label {
+  color: var(--twpx-input-text-error, #F00);
+}
+
+/* Disabled */
+.twpx-b24a-url-input-container.disabled {
+    pointer-events: none;
+}
+
+.twpx-b24a-url-input-container.disabled .twpx-b24a-url-input {
+  background-color: var(--twpx-input-background-disable, #F9F9F9);
+  pointer-events: none;
+  color: var(--twpx-input-text-disable, #919191);
+}
+
+.twpx-b24a-url-input-container.disabled .twpx-b24a-url-input-label {
+  color: var(--twpx-input-text-disable, #919191);
+}
+
+.twpx-b24a-url-input-container.disabled .twpx-b24a-url-input-lock {
+    display: block;
+}
+
+.twpx-b24a-url-input-container.disabled .twpx-b24a-url-input-clear {
+    display: none;
+}
+
+.twpx-b24a-url-input-container.filled.invalid:hover .twpx-b24a-url-input-clear-invalid {
+    opacity: 1;
+    pointer-events: auto;
+}
