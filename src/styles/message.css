@@ -1,4 +1,4 @@
-.twpx-b24a-admin-message {
+.twpx-message {
     display: flex;
     padding: 16px;
     align-items: flex-start;
@@ -6,7 +6,7 @@
     border-radius: 8px;
     background: #F22;
 }
-.twpx-b24a-admin-message__text {
+.twpx-message__text {
     color: #FFF;
     font-family: Arial;
     font-size: 16px;
@@ -17,17 +17,17 @@
 }
 
 /* Error */
-.twpx-b24a-admin-message.twpx-b24a-admin-message--error {
+.twpx-message.twpx-message--error {
     background: #F22;
 }
-.twpx-b24a-admin-message--error .twpx-b24a-admin-message__text {
+.twpx-message--error .twpx-message__text {
     color: #FFF;
 }
 
 /* Info */
-.twpx-b24a-admin-message.twpx-b24a-admin-message--info {
+.twpx-message.twpx-message--info {
     background: #F4F6F8;
 }
-.twpx-b24a-admin-message--info .twpx-b24a-admin-message__text {
+.twpx-message--info .twpx-message__text {
     color: #000;
 }

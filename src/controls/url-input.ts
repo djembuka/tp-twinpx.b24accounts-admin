@@ -18,21 +18,22 @@ export class UrlInput {
     // Сохраняем ссылку на обертку
     this.wrapper = wrapperElement;
     
-    // Проверяем, является ли элемент input
-    if (wrapperElement.tagName === 'INPUT' && wrapperElement.classList.contains('twpx-b24a-url-input')) {
-      // Если передан input, генерируем обертку
-      this.wrapper = this.generateWrapperFromInput(wrapperElement as HTMLInputElement);
+    // Проверяем, что впервые вызван класс на элементе
+    const noInstanceOnDiv = wrapperElement.classList.contains('twpx-url-input') && !wrapperElement.getAttribute('data-id');
+    if (noInstanceOnDiv) {
+      // Генерируем обертку
+      this.wrapper = this.generateWrapper(wrapperElement as HTMLDivElement);
       // Заменяем исходный элемент на сгенерированную обертку
       wrapperElement.parentNode?.replaceChild(this.wrapper, wrapperElement);
     }
     
     // Находим элементы внутри обертки
-    this.inputContainer = this.wrapper.querySelector('.twpx-b24a-url-input-container');
-    this.label = this.wrapper.querySelector('.twpx-b24a-url-input-label');
+    this.inputContainer = this.wrapper.querySelector('.twpx-url-input-container');
+    this.label = this.wrapper.querySelector('.twpx-url-input-label');
     this.input = this.wrapper.querySelector('input[type="url"]') as HTMLInputElement;
-    this.clearIcon = this.wrapper.querySelector('.twpx-b24a-url-input-clear');
-    this.clearInvalidIcon = this.wrapper.querySelector('.twpx-b24a-url-input-clear-invalid');
-    this.lockIcon = this.wrapper.querySelector('.twpx-b24a-url-input-lock');
+    this.clearIcon = this.wrapper.querySelector('.twpx-url-input-clear');
+    this.clearInvalidIcon = this.wrapper.querySelector('.twpx-url-input-clear-invalid');
+    this.lockIcon = this.wrapper.querySelector('.twpx-url-input-lock');
     
     if (!this.input) {
       throw new Error('Input элемент типа url не найден внутри обертки');
@@ -43,76 +44,69 @@ export class UrlInput {
   }
 
   /**
-   * Генерирует обертку для input из исходного элемента input
-   * @param inputElement - исходный input элемент
+   * Генерирует обертку для input из исходного элемента
+   * @param wrapperElement - исходный div элемент
    * @returns HTMLDivElement - сгенерированная обертка
    */
-  private generateWrapperFromInput(inputElement: HTMLInputElement): HTMLDivElement {
-    // Сохраняем все атрибуты и классы исходного input
-    const attributes: { [key: string]: string } = {};
-    for (const attr of inputElement.attributes) {
-      attributes[attr.name] = attr.value;
+  private generateWrapper(wrapperElement: HTMLDivElement): HTMLDivElement {
+    wrapperElement.setAttribute('data-id', `${Math.round(Math.random()*10000)}`);
+
+    const inputElement = wrapperElement.querySelector('input[type="url"]');
+    let labelElement = wrapperElement.querySelector('label');
+
+    if (!inputElement) {
+      throw new Error('Input элемент типа url не найден внутри обертки');
     }
+
+    inputElement.classList.add('twpx-url-input__input')
     
     // Создаем обертку
-    const wrapper = document.createElement('div');
-    wrapper.className = 'twpx-b24a-url-input-wrapper';
+    const wrapper = wrapperElement;
     
     // Создаем контейнер
     const container = document.createElement('div');
-    container.className = 'twpx-b24a-url-input-container';
+    container.className = 'twpx-url-input-container';
     
-    // Клонируем input с сохранением всех атрибутов
-    const newInput = document.createElement('input');
-    newInput.type = 'url';
-    
-    // Копируем все атрибуты
-    for (const [name, value] of Object.entries(attributes)) {
-      if (name !== 'type') { // type уже установлен
-        newInput.setAttribute(name, value);
-      }
+    if (!labelElement) {
+      // Создаем label
+      labelElement = document.createElement('label');
+      labelElement.textContent = 'Адрес портала Битрикс24';
     }
     
-    // Создаем label
-    const label = document.createElement('label');
-    label.className = 'twpx-b24a-url-input-label';
-    label.textContent = 'Адрес портала Битрикс24';
+    labelElement.className = 'twpx-url-input-label';
     
     // Создаем иконки
     const urlIcon = document.createElement('img');
-    urlIcon.className = 'twpx-b24a-url-input-icon';
+    urlIcon.className = 'twpx-url-input-icon';
     urlIcon.src = this.iconPaths.urlIcon;
     urlIcon.width = 32;
     urlIcon.height = 32;
     urlIcon.alt = '';
     
     const clearIcon = document.createElement('img');
-    clearIcon.className = 'twpx-b24a-url-input-clear';
+    clearIcon.className = 'twpx-url-input-clear';
     clearIcon.src = this.iconPaths.clearIcon;
     clearIcon.width = 32;
     clearIcon.height = 32;
     clearIcon.alt = '';
-    clearIcon.style.display = 'none'; // Скрываем по умолчанию
     
     const clearInvalidIcon = document.createElement('img');
-    clearInvalidIcon.className = 'twpx-b24a-url-input-clear-invalid';
+    clearInvalidIcon.className = 'twpx-url-input-clear-invalid';
     clearInvalidIcon.src = this.iconPaths.clearInvalidIcon;
     clearInvalidIcon.width = 32;
     clearInvalidIcon.height = 32;
     clearInvalidIcon.alt = '';
-    clearInvalidIcon.style.display = 'none'; // Скрываем по умолчанию
     
     const lockIcon = document.createElement('img');
-    lockIcon.className = 'twpx-b24a-url-input-lock';
+    lockIcon.className = 'twpx-url-input-lock';
     lockIcon.src = this.iconPaths.lockIcon;
     lockIcon.width = 32;
     lockIcon.height = 32;
     lockIcon.alt = '';
-    lockIcon.style.display = 'none'; // Скрываем по умолчанию
     
     // Добавляем все элементы в контейнер
-    container.appendChild(newInput);
-    container.appendChild(label);
+    container.appendChild(inputElement);
+    container.appendChild(labelElement);
     container.appendChild(urlIcon);
     container.appendChild(clearIcon);
     container.appendChild(clearInvalidIcon);

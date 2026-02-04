@@ -1,5 +1,5 @@
 /* Utils */
-.twpx-b24a--loading .twpx-b24a-admin-loader {
+.twpx-b24a--loading .twpx-loader {
   -webkit-animation: vue-loader-circle 1.3s infinite linear;
   animation: vue-loader-circle 1.3s infinite linear;
   display: block !important;

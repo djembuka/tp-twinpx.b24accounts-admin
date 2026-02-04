@@ -1,12 +1,12 @@
-.twpx-b24a-url-input-wrapper {
+.twpx-url-input {
   font-family: Arial, sans-serif;
 }
 
-.twpx-b24a-url-input-container {
+.twpx-url-input-container {
   position: relative;
 }
 
-.twpx-b24a-url-input {
+.twpx-url-input__input {
   color: var(--twpx-input-text-default, #000);
   width: 100%;
   padding: 24px calc(16px + 32px + 16px) 8px calc(16px + 32px + 16px);
@@ -19,15 +19,15 @@
   transition: border-color 0.2s ease;
 }
 
-.twpx-b24a-url-input-container:hover .twpx-b24a-url-input {
+.twpx-url-input-container:hover .twpx-url-input__input {
   border-color: var(--twpx-input-border-focus, #2900E0);
 }
 
-.twpx-b24a-url-input:focus {
+.twpx-url-input__input:focus {
   outline: none;
 }
 
-.twpx-b24a-url-input-label {
+.twpx-url-input-label {
   position: absolute;
   left: calc(16px + 32px + 16px);
   top: 50%;
@@ -43,15 +43,15 @@
   padding: 0;
 }
 
-.twpx-b24a-url-input-icon {
+.twpx-url-input-icon {
     position: absolute;
     top: 16px;
     left: 16px;
     z-index: 10;
 }
 
-.twpx-b24a-url-input-clear,
-.twpx-b24a-url-input-clear-invalid {
+.twpx-url-input-clear,
+.twpx-url-input-clear-invalid {
     position: absolute;
     top: 16px;
     right: 16px;
@@ -59,7 +59,7 @@
     z-index: 10;
 }
 
-.twpx-b24a-url-input-lock {
+.twpx-url-input-lock {
     display: none;
     position: absolute;
     top: 16px;
@@ -68,8 +68,8 @@
 }
 
 /* Состояние когда поле в фокусе или имеет значение */
-.twpx-b24a-url-input:focus + .twpx-b24a-url-input-label,
-.twpx-b24a-url-input-container.filled .twpx-b24a-url-input-label {
+.twpx-url-input__input:focus + .twpx-url-input-label,
+.twpx-url-input-container.filled .twpx-url-input-label {
   color: var(--twpx-input-text-input-name, #848C95);
   top: 16px;
   -webkit-transform: translateY(0);
@@ -77,57 +77,57 @@
   font-size: 12px;
 }
 
-.twpx-b24a-url-input-clear,
-.twpx-b24a-url-input-clear-invalid {
+.twpx-url-input-clear,
+.twpx-url-input-clear-invalid {
   opacity: 0;
   pointer-events: none;
   -webkit-transition: opacity 0.2s ease;
   transition: opacity 0.2s ease;
 }
 
-.twpx-b24a-url-input-container.filled:not(.invalid):hover .twpx-b24a-url-input-clear {
+.twpx-url-input-container.filled:not(.invalid):hover .twpx-url-input-clear {
     opacity: 1;
     pointer-events: auto;
 }
 
 /* Состояние ошибки */
-.twpx-b24a-url-input-container.invalid .twpx-b24a-url-input {
+.twpx-url-input-container.invalid .twpx-url-input__input {
   background: var(--twpx-input-background-error, #FFF2F2);
   color: var(--twpx-input-text-error, #F00);
 }
 
-.twpx-b24a-url-input-container.invalid:hover .twpx-b24a-url-input {
+.twpx-url-input-container.invalid:hover .twpx-url-input__input {
   border-color: var(--twpx-input-border-error, #F00);
 }
 
-.twpx-b24a-url-input-container.invalid .twpx-b24a-url-input-label {
+.twpx-url-input-container.invalid .twpx-url-input-label {
   color: var(--twpx-input-text-error, #F00);
 }
 
 /* Disabled */
-.twpx-b24a-url-input-container.disabled {
+.twpx-url-input-container.disabled {
     pointer-events: none;
 }
 
-.twpx-b24a-url-input-container.disabled .twpx-b24a-url-input {
+.twpx-url-input-container.disabled .twpx-url-input__input {
   background-color: var(--twpx-input-background-disable, #F9F9F9);
   pointer-events: none;
   color: var(--twpx-input-text-disable, #919191);
 }
 
-.twpx-b24a-url-input-container.disabled .twpx-b24a-url-input-label {
+.twpx-url-input-container.disabled .twpx-url-input-label {
   color: var(--twpx-input-text-disable, #919191);
 }
 
-.twpx-b24a-url-input-container.disabled .twpx-b24a-url-input-lock {
+.twpx-url-input-container.disabled .twpx-url-input-lock {
     display: block;
 }
 
-.twpx-b24a-url-input-container.disabled .twpx-b24a-url-input-clear {
+.twpx-url-input-container.disabled .twpx-url-input-clear {
     display: none;
 }
 
-.twpx-b24a-url-input-container.filled.invalid:hover .twpx-b24a-url-input-clear-invalid {
+.twpx-url-input-container.filled.invalid:hover .twpx-url-input-clear-invalid {
     opacity: 1;
     pointer-events: auto;
 }

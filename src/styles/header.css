@@ -1,20 +1,20 @@
-.twpx-b24a-admin-header {
+.twpx-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 32px;
 }
-.twpx-b24a-admin-logo {
+.twpx-logo {
     width: 64px;
     height: 64px;
 }
-.twpx-b24a-admin-tabs {
+.twpx-tabs {
     display: flex;
     justify-content: flex-end;
     align-items: center;
     gap: 32px;
 }
-.twpx-b24a-admin-tabs__item {
+.twpx-tabs__item {
     display: flex;
     height: 64px;
     padding: 16px 32px;
@@ -34,17 +34,17 @@
     -webkit-transition: opacity .2s ease;
     transition: opacity .2s ease;
 }
-.twpx-b24a-admin-tabs__item:hover {
+.twpx-tabs__item:hover {
     opacity: .7;
 }
-.twpx-b24a-admin-tabs__item.twpx-b24a-admin-tabs__item--current {
+.twpx-tabs__item.twpx-tabs__item--current {
     background: var(--twpx-button-color-grey, #6A6483);
     color: var(--color-base-white, #FFF);
 }
-.twpx-b24a-admin-tabs__item .twpx-b24a-admin-tabs__icon-current,
-.twpx-b24a-admin-tabs__item.twpx-b24a-admin-tabs__item--current .twpx-b24a-admin-tabs__icon {
+.twpx-tabs__item .twpx-tabs__icon-current,
+.twpx-tabs__item.twpx-tabs__item--current .twpx-tabs__icon {
     display: none;
 }
-.twpx-b24a-admin-tabs__item.twpx-b24a-admin-tabs__item--current .twpx-b24a-admin-tabs__icon-current {
+.twpx-tabs__item.twpx-tabs__item--current .twpx-tabs__icon-current {
     display: block;
 }

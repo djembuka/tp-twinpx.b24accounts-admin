@@ -1,14 +1,14 @@
-.twpx-b24a-admin-footer {
+.twpx-footer {
     display: grid;
     gap: 8px;
     justify-items: end;
 }
-.twpx-b24a-admin-footer-links {
+.twpx-footer-links {
     padding: 8px 0;
     display: flex;
     gap: 16px;
 }
-.twpx-b24a-admin-footer-links a {
+.twpx-footer-links a {
     color: #000;
     text-align: center;
     font-family: "PT Sans";
@@ -20,11 +20,11 @@
     -webkit-transition: opacity .2s ease;
     transition: opacity .2s ease;
 }
-.twpx-b24a-admin-footer-links a:hover {
+.twpx-footer-links a:hover {
     color: #000;
     opacity: .7;
 }
-.twpx-b24a-admin-footer-copyright {
+.twpx-footer-copyright {
     color: #000;
     text-align: center;
     font-family: "PT Sans";

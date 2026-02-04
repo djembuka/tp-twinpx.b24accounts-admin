@@ -10,8 +10,7 @@ import './styles/controls/url-input.css'
 import { UrlInput } from './controls/url-input'
 
 window.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.twpx-b24a-url-input-wrapper').forEach((wrapper) => {
-        const input = new UrlInput(wrapper as HTMLDivElement);
-        input.setInvalid(true)
+    document.querySelectorAll('.twpx-url-input').forEach((wrapper) => {
+        new UrlInput(wrapper as HTMLDivElement);
     })
 });
