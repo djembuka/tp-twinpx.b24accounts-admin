@@ -16,6 +16,8 @@ export class UrlInput {
   constructor(wrapperElement: HTMLDivElement) {
     // Сохраняем ссылку на обертку
     this.wrapper = wrapperElement;
+    const isInvalid = this.wrapper.classList.contains('invalid');
+    const isDisabled = this.wrapper.classList.contains('disabled');
     
     // Проверяем, что впервые вызван класс на элементе
     const noInstanceOnDiv = wrapperElement.classList.contains('twpx-url-input') && !wrapperElement.getAttribute('data-id');
@@ -39,6 +41,14 @@ export class UrlInput {
     
     // Инициализация
     this.init();
+
+    if (isInvalid) {
+      this.setInvalidState(true);
+    }
+
+    if (isDisabled) {
+      this.setDisabledState(true);
+    }
   }
 
   /**
@@ -51,6 +61,8 @@ export class UrlInput {
 
     const inputElement = wrapperElement.querySelector('input[type="url"]');
     let labelElement = wrapperElement.querySelector('label');
+    let errorElement = wrapperElement.querySelector('.twpx-url-input-error');
+    let descriptionElement = wrapperElement.querySelector('.twpx-url-input-description');
 
     if (!inputElement) {
       throw new Error('Input элемент типа url не найден внутри обертки');
@@ -109,6 +121,9 @@ export class UrlInput {
     container.appendChild(clearIcon);
     container.appendChild(clearInvalidIcon);
     container.appendChild(lockIcon);
+
+    if (errorElement) container.appendChild(errorElement);
+    if (descriptionElement) container.appendChild(descriptionElement);
     
     // Добавляем контейнер в обертку
     wrapper.appendChild(container);
