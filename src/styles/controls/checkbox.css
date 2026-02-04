@@ -26,8 +26,8 @@
   cursor: pointer;
   position: relative;
   background: var(--twpx-input-background-default, #F5F9FF);
-  padding: 16px;
-  border: 1px solid transparent;
+  padding: 15px;
+  border: 1px solid var(--twpx-input-background-default, #F5F9FF);;
   border-radius: 8px;
 }
 
