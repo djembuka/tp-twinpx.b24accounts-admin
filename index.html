@@ -38,7 +38,7 @@
             <div class="twpx-block__text">Укажите адрес вашего портала и нажмите кнопку Подключить.</div>
             
             <div class="twpx-url-input">
-              <input type="url" value="http://google.com">
+              <input name="PORTAL_URL" type="url" value="http://google.com">
               <label>Адрес портала Битрикс24</label>
             </div>
 
@@ -59,7 +59,38 @@
             <div class="twpx-block__title">Тип контакта с личным кабинетом</div>
             <div class="twpx-block__text">Выберите типы контактов, для которых будут созданы личные кабинеты.</div>
 
+            <div class="twpx-checkbox-input">
+              <input type="checkbox" id="checkbox1" class="twpx-checkbox__native">
+              <div class="twpx-checkbox-container">
+                <div class="twpx-checkbox__box" role="checkbox" aria-checked="false" tabindex="0">
+                  <svg class="twpx-checkbox__check" viewBox="0 0 20 20" fill="none">
+                    <path d="M5 10L8 13L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <label for="checkbox1" class="twpx-checkbox-label">Принимаю условия соглашения</label>
+              </div>
+            </div>
+
             <button class="twpx-button twpx-b24a--loading">
+              <img class="twpx-loader" src="/images/loader-icon.svg" width="16" height="16" alt="" />
+              <span>Подключить</span>
+            </button>
+          </div>
+
+          <div class="twpx-block">
+            <div class="twpx-block__title">Принудительная установка Типа контакта</div>
+            <div class="twpx-block__text">Принудительное выставление определённого Типа контакта всем контактам Битрикс24.</div>
+            
+            <div class="twpx-select">
+              <label>Название поля</label>
+              <select name="CONTACT_TYPE">
+                <option value="option1">Опция 1</option>
+                <option value="option2">Опция 2</option>
+                <option value="option3">Опция 3</option>
+              </select>
+            </div>
+
+            <button class="twpx-button">
               <img class="twpx-loader" src="/images/loader-icon.svg" width="16" height="16" alt="" />
               <span>Подключить</span>
             </button>
