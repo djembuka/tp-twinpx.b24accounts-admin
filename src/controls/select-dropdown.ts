@@ -5,15 +5,13 @@ export class SelectDropdown {
   private customInput: HTMLDivElement;
   private valueDisplay: HTMLSpanElement;
   private label: HTMLLabelElement;
-  private arrow: HTMLImageElement;
-  private lockIcon: HTMLImageElement | null;
   private dropdown: HTMLDivElement;
   private options: NodeListOf<HTMLDivElement>;
   
   private iconPaths = {
-    selectIcon: '/images/select-icon.svg',
-    arrowDown: '/images/arrow-icon.svg',
-    lockIcon: '/images/lock-icon.svg'
+    selectIcon: 'images/select-icon.svg',
+    arrowDown: 'images/arrow-icon.svg',
+    lockIcon: 'images/lock-icon.svg'
   };
   
   private isOpen = false;
@@ -38,8 +36,6 @@ export class SelectDropdown {
     this.customInput = this.wrapper.querySelector('.twpx-select__input')!;
     this.valueDisplay = this.customInput.querySelector('.twpx-select__value')!;
     this.label = this.wrapper.querySelector('.twpx-select-label')!;
-    this.arrow = this.wrapper.querySelector('.twpx-select__arrow')!;
-    this.lockIcon = this.wrapper.querySelector('.twpx-select-lock');
     this.dropdown = this.wrapper.querySelector('.twpx-select-dropdown')!;
     this.options = this.dropdown.querySelectorAll('.twpx-select-option');
     
@@ -322,10 +318,6 @@ export class SelectDropdown {
 
   private setFilledState(filled: boolean): void {
     this.container.classList.toggle('filled', filled);
-  }
-
-  private setFocusedState(focused: boolean): void {
-    this.container.classList.toggle('focused', focused);
   }
 
   public setDisabledState(disabled: boolean): void {

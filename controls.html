@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controls</title>
+</head>
+<body>
+    <div style="max-width: 600px; margin: 20px auto; display: grid; gap: 32px;">
+
+        <div class="twpx-url-input">
+            <input name="PORTAL_URL" type="url" value="http://google.com">
+            <label>Адрес портала Битрикс24</label>
+        </div>
+
+        <div class="twpx-checkbox-input">
+            <input type="checkbox" class="twpx-checkbox__native">
+            <label class="twpx-checkbox-label">Принимаю условия соглашения</label>
+        </div>
+
+        <div class="twpx-select">
+            <label>Название поля</label>
+            <select name="CONTACT_TYPE">
+            <option value="option1">Опция 1</option>
+            <option value="option2">Опция 2</option>
+            <option value="option3">Опция 3</option>
+            </select>
+        </div>
+
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

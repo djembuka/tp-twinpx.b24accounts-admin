@@ -17,9 +17,11 @@
               Подключение</div>
             <div class="twpx-tabs__item">
               <img class="twpx-tabs__icon" src="/images/settings-icon.svg" width="24" height="24" alt="" />
+              <img class="twpx-tabs__icon-current" src="/images/settings-current-icon.svg" width="24" height="24" alt="" />
               Настройки</div>
             <div class="twpx-tabs__item">
               <img class="twpx-tabs__icon" src="/images/events-icon.svg" width="24" height="24" alt="" />
+              <img class="twpx-tabs__icon-current" src="/images/events-current-icon.svg" width="24" height="24" alt="" />
               Пользовательские события</div>
           </div>
         </div>
@@ -42,9 +44,19 @@
               <label>Адрес портала Битрикс24</label>
             </div>
 
+            <button class="twpx-button">
+              <img class="twpx-loader" src="/images/loader-icon.svg" width="16" height="16" alt="" />
+              <span>Подключить</span>
+            </button>
+
             <button class="twpx-button twpx-b24a--loading">
               <img class="twpx-loader" src="/images/loader-icon.svg" width="16" height="16" alt="" />
               <span>Подключить</span>
+            </button>
+
+            <button class="twpx-button twpx-button--inverse">
+              <img class="twpx-loader" src="/images/loader-icon.svg" width="16" height="16" alt="" />
+              <span>Отключить</span>
             </button>
           </div>
 
@@ -59,15 +71,25 @@
             <div class="twpx-block__title">Тип контакта с личным кабинетом</div>
             <div class="twpx-block__text">Выберите типы контактов, для которых будут созданы личные кабинеты.</div>
 
-            <div class="twpx-checkbox-input">
-              <input type="checkbox" id="checkbox1" class="twpx-checkbox__native">
-              <div class="twpx-checkbox-container">
-                <div class="twpx-checkbox__box" role="checkbox" aria-checked="false" tabindex="0">
-                  <svg class="twpx-checkbox__check" viewBox="0 0 20 20" fill="none">
-                    <path d="M5 10L8 13L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </div>
-                <label for="checkbox1" class="twpx-checkbox-label">Принимаю условия соглашения</label>
+            <div class="twpx-contact-types">
+              <div class="twpx-checkbox-input">
+                <input type="checkbox" class="twpx-checkbox__native">
+                <label class="twpx-checkbox-label">Принимаю условия соглашения</label>
+              </div>
+              
+              <div class="twpx-checkbox-input">
+                <input type="checkbox" class="twpx-checkbox__native">
+                <label class="twpx-checkbox-label">Принимаю условия соглашения</label>
+              </div>
+              
+              <div class="twpx-checkbox-input">
+                <input type="checkbox" id="checkbox3" class="twpx-checkbox__native">
+                <label for="checkbox3" class="twpx-checkbox-label">Принимаю условия соглашения</label>
+              </div>
+              
+              <div class="twpx-checkbox-input">
+                <input type="checkbox" id="checkbox4" class="twpx-checkbox__native">
+                <label for="checkbox4" class="twpx-checkbox-label">Принимаю условия соглашения</label>
               </div>
             </div>
 
@@ -90,9 +112,19 @@
               </select>
             </div>
 
-            <button class="twpx-button">
+            <button class="twpx-button twpx-button--light">
               <img class="twpx-loader" src="/images/loader-icon.svg" width="16" height="16" alt="" />
-              <span>Подключить</span>
+              <span>Установить</span>
+            </button>
+          </div>
+
+          <div class="twpx-block">
+            <div class="twpx-block__title">Принудительная синхронизация</div>
+            <div class="twpx-block__text">Запустите принудительную синхронизацию.</div>
+
+            <button class="twpx-button twpx-button--light">
+              <img class="twpx-loader" src="/images/loader-icon.svg" width="16" height="16" alt="" />
+              <span>Синхронизировать</span>
             </button>
           </div>
 

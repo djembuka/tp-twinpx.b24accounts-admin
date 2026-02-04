@@ -1,4 +1,7 @@
 /* Utils */
+.twpx-b24a--loading {
+  pointer-events: none;
+}
 .twpx-b24a--loading .twpx-loader {
   -webkit-animation: vue-loader-circle 1.3s infinite linear;
   animation: vue-loader-circle 1.3s infinite linear;
@@ -20,4 +23,10 @@
   100% {
     transform: rotate(0);
   }
+}
+
+.twpx-contact-types {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
 }

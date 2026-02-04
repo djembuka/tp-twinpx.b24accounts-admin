@@ -33,7 +33,7 @@
     transition: opacity .2s ease;
     cursor: pointer;
     color: var(--twpx-button-text-white, #FFF);
-    font-family: Inter;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
     font-style: normal;
     font-weight: 700;
@@ -50,4 +50,11 @@ button.twpx-button {
 }
 .twpx-button.twpx-b24a--loading span {
     display: none;
+}
+.twpx-button.twpx-button--inverse {
+    background: var(--twpx-button-color-secondaty, #F20089);
+}
+.twpx-button.twpx-button--light {
+    color: var(--twpx-button-text-blue, #2900E0);
+    background: var(--twpx-button-color-light, #EEF1FF);
 }

@@ -5,13 +5,12 @@ export class UrlInput {
   private inputContainer: HTMLDivElement | null;
   private clearIcon: HTMLImageElement | null;
   private clearInvalidIcon: HTMLImageElement | null;
-  private lockIcon: HTMLImageElement | null;
 
   private iconPaths = {
-    urlIcon: '/images/url-icon.svg',
-    clearIcon: '/images/clear-icon.svg',
-    clearInvalidIcon: '/images/clear-invalid-icon.svg',
-    lockIcon: '/images/lock-icon.svg'
+    urlIcon: 'images/url-icon.svg',
+    clearIcon: 'images/clear-icon.svg',
+    clearInvalidIcon: 'images/clear-invalid-icon.svg',
+    lockIcon: 'images/lock-icon.svg'
   };
 
   constructor(wrapperElement: HTMLDivElement) {
@@ -33,7 +32,6 @@ export class UrlInput {
     this.input = this.wrapper.querySelector('input[type="url"]') as HTMLInputElement;
     this.clearIcon = this.wrapper.querySelector('.twpx-url-input-clear');
     this.clearInvalidIcon = this.wrapper.querySelector('.twpx-url-input-clear-invalid');
-    this.lockIcon = this.wrapper.querySelector('.twpx-url-input-lock');
     
     if (!this.input) {
       throw new Error('Input элемент типа url не найден внутри обертки');
@@ -150,7 +148,7 @@ export class UrlInput {
   }
   
   // Обработчик ввода
-  private handleInput(event: Event): void {
+  private handleInput(): void {
     // Обновляем класс filled в зависимости от наличия текста
     if (this.input.value.trim() !== '') {
       this.setFilledState(true);
@@ -162,7 +160,7 @@ export class UrlInput {
   }
   
   // Обработчик фокуса
-  private handleFocus(event: FocusEvent): void {
+  private handleFocus(): void {
     // Добавляем класс для стилизации при фокусе
     this.setFocusedState(true);
     
@@ -173,7 +171,7 @@ export class UrlInput {
   }
   
   // Обработчик потери фокуса
-  private handleBlur(event: FocusEvent): void {
+  private handleBlur(): void {
     // Убираем класс focused
     this.setFocusedState(false);
     
@@ -186,7 +184,7 @@ export class UrlInput {
     this.validate();
   }
 
-  private handleClear(event: MouseEvent): void {
+  private handleClear(): void {
     this.reset();
     this.focus();
   }

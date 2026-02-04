@@ -1,6 +1,11 @@
 .twpx-select {
   font-family: Arial, sans-serif;
   position: relative;
+  box-sizing: border-box;
+}
+
+.twpx-select * {
+  box-sizing: border-box;
 }
 
 /* Скрываем нативный select */

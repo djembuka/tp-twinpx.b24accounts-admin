@@ -3,7 +3,8 @@ export class CheckboxInput {
   private nativeCheckbox: HTMLInputElement;
   private customBox: HTMLDivElement;
   private checkIcon: SVGElement;
-  private label: HTMLLabelElement;
+  private container: HTMLLabelElement;
+  private label: HTMLSpanElement;
   
   // Состояния
   private isChecked = false;
@@ -25,6 +26,7 @@ export class CheckboxInput {
     this.nativeCheckbox = this.wrapper.querySelector('.twpx-checkbox__native')!;
     this.customBox = this.wrapper.querySelector('.twpx-checkbox__box')!;
     this.checkIcon = this.wrapper.querySelector('.twpx-checkbox__check')!;
+    this.container = this.wrapper.querySelector('.twpx-checkbox-container')!;
     this.label = this.wrapper.querySelector('.twpx-checkbox-label')!;
     
     // Инициализируем состояния
@@ -56,8 +58,9 @@ export class CheckboxInput {
     nativeCheckbox.className = 'twpx-checkbox__native';
     
     // Создаем контейнер
-    const container = document.createElement('div');
+    const container = document.createElement('label');
     container.className = 'twpx-checkbox-container';
+    container.setAttribute('for', id);
     
     // Кастомный box
     const customBox = document.createElement('div');
@@ -69,12 +72,12 @@ export class CheckboxInput {
     // SVG галочка
     const checkIcon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     checkIcon.setAttribute('class', 'twpx-checkbox__check');
-    checkIcon.setAttribute('viewBox', '0 0 20 20');
+    checkIcon.setAttribute('viewBox', '0 0 15 10');
     checkIcon.setAttribute('fill', 'none');
     
     const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-    path.setAttribute('d', 'M5 10L8 13L15 6');
-    path.setAttribute('stroke', 'currentColor');
+    path.setAttribute('d', 'M1 3.66667L6.2 9L14 1');
+    path.setAttribute('stroke', 'white');
     path.setAttribute('stroke-width', '2');
     path.setAttribute('stroke-linecap', 'round');
     path.setAttribute('stroke-linejoin', 'round');
@@ -83,9 +86,8 @@ export class CheckboxInput {
     customBox.appendChild(checkIcon);
     
     // Label
-    const label = document.createElement('label');
+    const label = document.createElement('span');
     label.className = 'twpx-checkbox-label';
-    label.setAttribute('for', id);
     label.textContent = labelText;
     
     // Собираем структуру
@@ -110,7 +112,7 @@ export class CheckboxInput {
     this.nativeCheckbox.addEventListener('change', this.handleNativeChange.bind(this));
     
     // Для label клика
-    this.label.addEventListener('click', this.handleLabelClick.bind(this));
+    this.container.addEventListener('click', this.handleLabelClick.bind(this));
   }
 
   private handleClick(event: MouseEvent): void {
@@ -119,7 +121,7 @@ export class CheckboxInput {
     this.toggle();
   }
 
-  private handleLabelClick(event: MouseEvent): void {
+  private handleLabelClick(): void {
     // Label клик уже обрабатывается нативным браузером через атрибут for
     // Но мы все равно синхронизируем состояние
     setTimeout(() => {
@@ -189,7 +191,7 @@ export class CheckboxInput {
       
       // Возвращаем обычную галочку
       const path = this.checkIcon.querySelector('path')!;
-      path.setAttribute('d', 'M5 10L8 13L15 6');
+      path.setAttribute('d', 'M1 3.66667L6.2 9L14 1');
     }
     
     // Состояние disabled из нативного checkbox

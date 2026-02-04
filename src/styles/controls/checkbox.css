@@ -1,8 +1,12 @@
 .twpx-checkbox-input {
   font-family: Arial, sans-serif;
   position: relative;
-  display: inline-flex;
   align-items: flex-start;
+  box-sizing: border-box;
+}
+
+.twpx-checkbox-input * {
+  box-sizing: border-box;
 }
 
 /* Скрываем нативный checkbox */
@@ -18,9 +22,13 @@
 .twpx-checkbox-container {
   display: flex;
   align-items: flex-start;
-  gap: 12px;
+  gap: 16px;
   cursor: pointer;
   position: relative;
+  background: var(--twpx-input-background-default, #F5F9FF);
+  padding: 16px;
+  border: 1px solid transparent;
+  border-radius: 8px;
 }
 
 .twpx-checkbox__box {
@@ -28,9 +36,9 @@
   height: 24px;
   min-width: 24px;
   min-height: 24px;
-  border: 2px solid var(--twpx-checkbox-border-default, #8C8C8C);
-  border-radius: 6px;
-  background: var(--twpx-checkbox-background-default, #FFFFFF);
+  border: 2px solid var(--twpx-input-border-focus, #2900E0);
+  border-radius: 4px;
+  background: var(--twpx-input-background-default, #F5F9FF);
   position: relative;
   transition: all 0.2s ease;
   display: flex;
@@ -63,6 +71,10 @@
 .twpx-checkbox__box:focus-visible {
   outline: 2px solid var(--twpx-checkbox-border-focus, #2900E0);
   outline-offset: 2px;
+}
+
+.twpx-checkbox-container:hover {
+  border: 1px solid var(--twpx-input-border-focus, #2900E0);
 }
 
 .twpx-checkbox-container:hover .twpx-checkbox__box:not(.disabled) {
@@ -117,14 +129,17 @@
 
 /* Label стили */
 .twpx-checkbox-label {
-  font-size: 16px;
-  line-height: 24px;
-  color: var(--twpx-checkbox-text-default, #333333);
   user-select: none;
   margin: 0;
   padding-top: 2px;
   cursor: pointer;
   transition: color 0.2s ease;
+  color: var(--twpx-input-text-default, #000);
+    font-family: Arial;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px; /* 100% */
 }
 
 .twpx-checkbox-container:hover .twpx-checkbox-label {
