@@ -5,12 +5,16 @@ export class UrlInput {
   private inputContainer: HTMLDivElement | null;
   private clearIcon: HTMLImageElement | null;
   private clearInvalidIcon: HTMLImageElement | null;
+  private iconsUrl: string;
+  private urlIcon: HTMLImageElement | null;
 
   private iconPaths = {
-    urlIcon: 'images/url-icon.svg',
-    clearIcon: 'images/clear-icon.svg',
-    clearInvalidIcon: 'images/clear-invalid-icon.svg',
-    lockIcon: 'images/lock-icon.svg'
+    urlIcon: 'url-icon.svg',
+    urlDisabledIcon: 'url-disabled-icon.svg',
+    urlInvalidIcon: 'url-invalid-icon.svg',
+    clearIcon: 'clear-icon.svg',
+    clearInvalidIcon: 'clear-invalid-icon.svg',
+    lockIcon: 'lock-icon.svg'
   };
 
   constructor(wrapperElement: HTMLDivElement) {
@@ -18,12 +22,13 @@ export class UrlInput {
     this.wrapper = wrapperElement;
     const isInvalid = this.wrapper.classList.contains('invalid');
     const isDisabled = this.wrapper.classList.contains('disabled');
+    this.iconsUrl = this.getIconsUrl(wrapperElement as HTMLDivElement);
     
     // Проверяем, что впервые вызван класс на элементе
     const noInstanceOnDiv = wrapperElement.classList.contains('twpx-url-input') && !wrapperElement.getAttribute('data-id');
     if (noInstanceOnDiv) {
       // Генерируем обертку
-      this.wrapper = this.generateWrapper(wrapperElement as HTMLDivElement);
+      this.wrapper = this.generateWrapper(wrapperElement as HTMLDivElement, this.iconsUrl);
       // Заменяем исходный элемент на сгенерированную обертку
       wrapperElement.parentNode?.replaceChild(this.wrapper, wrapperElement);
     }
@@ -34,7 +39,8 @@ export class UrlInput {
     this.input = this.wrapper.querySelector('input[type="url"]') as HTMLInputElement;
     this.clearIcon = this.wrapper.querySelector('.twpx-url-input-clear');
     this.clearInvalidIcon = this.wrapper.querySelector('.twpx-url-input-clear-invalid');
-    
+    this.urlIcon = this.wrapper.querySelector('.twpx-url-input-icon');
+
     if (!this.input) {
       throw new Error('Input элемент типа url не найден внутри обертки');
     }
@@ -51,12 +57,21 @@ export class UrlInput {
     }
   }
 
+  private getIconsUrl(wrapperElement: HTMLDivElement): string {
+    const icon = wrapperElement.querySelector('img');
+    if (icon) {
+      const src: string = icon.getAttribute('src') || '';
+      return src.substring(0, src.lastIndexOf('/')) + '/';
+    }
+    return ''
+  }
+
   /**
    * Генерирует обертку для input из исходного элемента
    * @param wrapperElement - исходный div элемент
    * @returns HTMLDivElement - сгенерированная обертка
    */
-  private generateWrapper(wrapperElement: HTMLDivElement): HTMLDivElement {
+  private generateWrapper(wrapperElement: HTMLDivElement, iconsUrl: string): HTMLDivElement {
     wrapperElement.setAttribute('data-id', `${Math.round(Math.random()*10000)}`);
 
     const inputElement = wrapperElement.querySelector('input[type="url"]');
@@ -72,6 +87,7 @@ export class UrlInput {
     
     // Создаем обертку
     const wrapper = wrapperElement;
+    wrapper.innerHTML = '';
     
     // Создаем контейнер
     const container = document.createElement('div');
@@ -88,28 +104,28 @@ export class UrlInput {
     // Создаем иконки
     const urlIcon = document.createElement('img');
     urlIcon.className = 'twpx-url-input-icon';
-    urlIcon.src = this.iconPaths.urlIcon;
+    urlIcon.src = `${iconsUrl}${this.iconPaths.urlIcon}`;
     urlIcon.width = 32;
     urlIcon.height = 32;
     urlIcon.alt = '';
     
     const clearIcon = document.createElement('img');
     clearIcon.className = 'twpx-url-input-clear';
-    clearIcon.src = this.iconPaths.clearIcon;
+    clearIcon.src = `${iconsUrl}${this.iconPaths.clearIcon}`;
     clearIcon.width = 32;
     clearIcon.height = 32;
     clearIcon.alt = '';
     
     const clearInvalidIcon = document.createElement('img');
     clearInvalidIcon.className = 'twpx-url-input-clear-invalid';
-    clearInvalidIcon.src = this.iconPaths.clearInvalidIcon;
+    clearInvalidIcon.src = `${iconsUrl}${this.iconPaths.clearInvalidIcon}`;
     clearInvalidIcon.width = 32;
     clearInvalidIcon.height = 32;
     clearInvalidIcon.alt = '';
     
     const lockIcon = document.createElement('img');
     lockIcon.className = 'twpx-url-input-lock';
-    lockIcon.src = this.iconPaths.lockIcon;
+    lockIcon.src = `${iconsUrl}${this.iconPaths.lockIcon}`;
     lockIcon.width = 32;
     lockIcon.height = 32;
     lockIcon.alt = '';
@@ -237,6 +253,9 @@ export class UrlInput {
   private setDisabledState(disabled: boolean) {
     if (this.inputContainer)
       this.inputContainer.classList.toggle('disabled', disabled);
+
+    if (this.urlIcon)
+      this.urlIcon.src = `${this.iconsUrl}${disabled ? this.iconPaths.urlDisabledIcon : this.iconPaths.urlIcon}`;
   }
   
   // Установить состояние невалидности
@@ -245,12 +264,18 @@ export class UrlInput {
       this.inputContainer.classList.toggle('valid', !invalid);
       this.inputContainer.classList.toggle('invalid', invalid);
     }
+
+    if (this.urlIcon)
+      this.urlIcon.src = `${this.iconsUrl}${this.iconPaths.urlInvalidIcon}`;
   }
   
   // Очистить состояние валидации
   public clearValidationState(): void {
     if (this.inputContainer)
       this.inputContainer.classList.remove('valid', 'invalid');
+
+    if (this.urlIcon)
+      this.urlIcon.src = `${this.iconsUrl}${this.iconPaths.urlIcon}`;
   }
   
   // Получить значение
@@ -281,7 +306,6 @@ export class UrlInput {
   
   // Включить/выключить поле
   public setDisabled(disabled: boolean): void {
-    this.input.disabled = disabled;
     this.setDisabledState(disabled);
   }
 
