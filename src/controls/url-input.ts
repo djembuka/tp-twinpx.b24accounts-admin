@@ -7,6 +7,7 @@ export class UrlInput {
   private clearInvalidIcon: HTMLImageElement | null;
   private iconsUrl: string;
   private urlIcon: HTMLImageElement | null;
+  private clearMouseDown: boolean;
 
   private iconPaths = {
     urlIcon: 'url-icon.svg',
@@ -23,6 +24,8 @@ export class UrlInput {
     const isInvalid = this.wrapper.classList.contains('invalid');
     const isDisabled = this.wrapper.classList.contains('disabled');
     this.iconsUrl = this.getIconsUrl(wrapperElement as HTMLDivElement);
+
+    this.clearMouseDown = false;
     
     // Проверяем, что впервые вызван класс на элементе
     const noInstanceOnDiv = wrapperElement.classList.contains('twpx-url-input') && !wrapperElement.getAttribute('data-id');
@@ -157,7 +160,7 @@ export class UrlInput {
     this.setupIcons();
     
     // Добавляем обработчики событий
-    this.input.addEventListener('change', this.validate.bind(this));
+    this.input.addEventListener('change', this.handleChange.bind(this));
     this.input.addEventListener('input', this.handleInput.bind(this));
     this.input.addEventListener('focus', this.handleFocus.bind(this));
     this.input.addEventListener('blur', this.handleBlur.bind(this));
@@ -170,12 +173,19 @@ export class UrlInput {
     // Обработчик для иконки очистки
     if (this.clearIcon) {
       this.clearIcon.addEventListener('click', this.handleClear.bind(this));
+      this.clearIcon.addEventListener('mousedown', () => {this.clearMouseDown = true;});
+      this.clearIcon.addEventListener('mouseup', () => {this.clearMouseDown = false;});
     }
     
     // Обработчик для иконки очистки при ошибке
     if (this.clearInvalidIcon) {
       this.clearInvalidIcon.addEventListener('click', this.handleClear.bind(this));
     }
+  }
+
+  private handleChange(): void {
+    if (!this.clearMouseDown)
+      this.validate();
   }
   
   // Обработчик ввода
@@ -212,7 +222,8 @@ export class UrlInput {
     }
     
     // Валидируем при потере фокуса
-    this.validate();
+    if (!this.clearMouseDown)
+      this.validate();
   }
 
   private handleClear(): void {
@@ -266,7 +277,7 @@ export class UrlInput {
     }
 
     if (this.urlIcon)
-      this.urlIcon.src = `${this.iconsUrl}${this.iconPaths.urlInvalidIcon}`;
+      this.urlIcon.src = `${this.iconsUrl}${invalid ? this.iconPaths.urlInvalidIcon : this.iconPaths.urlIcon}`;
   }
   
   // Очистить состояние валидации
