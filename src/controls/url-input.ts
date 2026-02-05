@@ -5,7 +5,7 @@ export class UrlInput {
   private inputContainer: HTMLDivElement | null;
   private clearIcon: HTMLImageElement | null;
   private clearInvalidIcon: HTMLImageElement | null;
-  private iconsUrl: string;
+  private iconsPath: string;
   private urlIcon: HTMLImageElement | null;
   private clearMouseDown: boolean;
 
@@ -23,7 +23,7 @@ export class UrlInput {
     this.wrapper = wrapperElement;
     const isInvalid = this.wrapper.classList.contains('invalid');
     const isDisabled = this.wrapper.classList.contains('disabled');
-    this.iconsUrl = this.getIconsUrl(wrapperElement as HTMLDivElement);
+    this.iconsPath = this.wrapper.getAttribute('data-iconspath') ?? '';
 
     this.clearMouseDown = false;
     
@@ -31,7 +31,7 @@ export class UrlInput {
     const noInstanceOnDiv = wrapperElement.classList.contains('twpx-url-input') && !wrapperElement.getAttribute('data-id');
     if (noInstanceOnDiv) {
       // Генерируем обертку
-      this.wrapper = this.generateWrapper(wrapperElement as HTMLDivElement, this.iconsUrl);
+      this.wrapper = this.generateWrapper(wrapperElement as HTMLDivElement, this.iconsPath);
       // Заменяем исходный элемент на сгенерированную обертку
       wrapperElement.parentNode?.replaceChild(this.wrapper, wrapperElement);
     }
@@ -60,21 +60,12 @@ export class UrlInput {
     }
   }
 
-  private getIconsUrl(wrapperElement: HTMLDivElement): string {
-    const icon = wrapperElement.querySelector('img');
-    if (icon) {
-      const src: string = icon.getAttribute('src') || '';
-      return src.substring(0, src.lastIndexOf('/')) + '/';
-    }
-    return ''
-  }
-
   /**
    * Генерирует обертку для input из исходного элемента
    * @param wrapperElement - исходный div элемент
    * @returns HTMLDivElement - сгенерированная обертка
    */
-  private generateWrapper(wrapperElement: HTMLDivElement, iconsUrl: string): HTMLDivElement {
+  private generateWrapper(wrapperElement: HTMLDivElement, iconsPath: string): HTMLDivElement {
     wrapperElement.setAttribute('data-id', `${Math.round(Math.random()*10000)}`);
 
     const inputElement = wrapperElement.querySelector('input[type="url"]');
@@ -107,28 +98,28 @@ export class UrlInput {
     // Создаем иконки
     const urlIcon = document.createElement('img');
     urlIcon.className = 'twpx-url-input-icon';
-    urlIcon.src = `${iconsUrl}${this.iconPaths.urlIcon}`;
+    urlIcon.src = `${iconsPath}${this.iconPaths.urlIcon}`;
     urlIcon.width = 32;
     urlIcon.height = 32;
     urlIcon.alt = '';
     
     const clearIcon = document.createElement('img');
     clearIcon.className = 'twpx-url-input-clear';
-    clearIcon.src = `${iconsUrl}${this.iconPaths.clearIcon}`;
+    clearIcon.src = `${iconsPath}${this.iconPaths.clearIcon}`;
     clearIcon.width = 32;
     clearIcon.height = 32;
     clearIcon.alt = '';
     
     const clearInvalidIcon = document.createElement('img');
     clearInvalidIcon.className = 'twpx-url-input-clear-invalid';
-    clearInvalidIcon.src = `${iconsUrl}${this.iconPaths.clearInvalidIcon}`;
+    clearInvalidIcon.src = `${iconsPath}${this.iconPaths.clearInvalidIcon}`;
     clearInvalidIcon.width = 32;
     clearInvalidIcon.height = 32;
     clearInvalidIcon.alt = '';
     
     const lockIcon = document.createElement('img');
     lockIcon.className = 'twpx-url-input-lock';
-    lockIcon.src = `${iconsUrl}${this.iconPaths.lockIcon}`;
+    lockIcon.src = `${iconsPath}${this.iconPaths.lockIcon}`;
     lockIcon.width = 32;
     lockIcon.height = 32;
     lockIcon.alt = '';
@@ -266,7 +257,7 @@ export class UrlInput {
       this.inputContainer.classList.toggle('disabled', disabled);
 
     if (this.urlIcon)
-      this.urlIcon.src = `${this.iconsUrl}${disabled ? this.iconPaths.urlDisabledIcon : this.iconPaths.urlIcon}`;
+      this.urlIcon.src = `${this.iconsPath}${disabled ? this.iconPaths.urlDisabledIcon : this.iconPaths.urlIcon}`;
   }
   
   // Установить состояние невалидности
@@ -277,7 +268,7 @@ export class UrlInput {
     }
 
     if (this.urlIcon)
-      this.urlIcon.src = `${this.iconsUrl}${invalid ? this.iconPaths.urlInvalidIcon : this.iconPaths.urlIcon}`;
+      this.urlIcon.src = `${this.iconsPath}${invalid ? this.iconPaths.urlInvalidIcon : this.iconPaths.urlIcon}`;
   }
   
   // Очистить состояние валидации
@@ -286,7 +277,7 @@ export class UrlInput {
       this.inputContainer.classList.remove('valid', 'invalid');
 
     if (this.urlIcon)
-      this.urlIcon.src = `${this.iconsUrl}${this.iconPaths.urlIcon}`;
+      this.urlIcon.src = `${this.iconsPath}${this.iconPaths.urlIcon}`;
   }
   
   // Получить значение
