@@ -5,6 +5,11 @@ export class CheckboxInput {
   private checkIcon: SVGElement;
   private container: HTMLLabelElement;
   private label: HTMLSpanElement;
+  private iconsPath: string;
+
+  private iconPaths = {
+    lockIcon: 'lock-icon.svg'
+  };
   
   // Состояния
   private isChecked = false;
@@ -12,6 +17,7 @@ export class CheckboxInput {
 
   constructor(wrapperElement: HTMLDivElement) {
     this.wrapper = wrapperElement;
+    this.iconsPath = this.wrapper.getAttribute('data-iconspath') ?? '';
     
     // Проверяем, нужна ли генерация структуры
     const needsGeneration = wrapperElement.classList.contains('twpx-checkbox-input') && 
