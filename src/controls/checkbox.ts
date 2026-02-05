@@ -4,7 +4,8 @@ export class CheckboxInput {
   private customBox: HTMLDivElement;
   private checkIcon: SVGElement;
   private container: HTMLLabelElement;
-  private label: HTMLSpanElement;
+  private label: HTMLLabelElement;
+  private span: HTMLSpanElement;
   private iconsPath: string;
 
   private iconPaths = {
@@ -49,6 +50,8 @@ export class CheckboxInput {
   private generateWrapper(wrapperElement: HTMLDivElement): HTMLDivElement {
     const checkboxElement = wrapperElement.querySelector('input[type="checkbox"]');
     const labelElement = wrapperElement.querySelector('label');
+    let errorElement = wrapperElement.querySelector('.twpx-checkbox-error');
+    let descriptionElement = wrapperElement.querySelector('.twpx-checkbox-description');
     
     if (!checkboxElement) {
       throw new Error('Input элемент типа checkbox не найден');
@@ -68,9 +71,12 @@ export class CheckboxInput {
     nativeCheckbox.className = 'twpx-checkbox__native';
     
     // Создаем контейнер
-    const container = document.createElement('label');
+    const container = document.createElement('div');
     container.className = 'twpx-checkbox-container';
-    container.setAttribute('for', id);
+
+    const label = document.createElement('label');
+    label.className = 'twpx-checkbox-label';
+    label.setAttribute('for', id);
     
     // Кастомный box
     const customBox = document.createElement('div');
@@ -96,13 +102,18 @@ export class CheckboxInput {
     customBox.appendChild(checkIcon);
     
     // Label
-    const label = document.createElement('span');
-    label.className = 'twpx-checkbox-label';
-    label.textContent = labelText;
+    const span = document.createElement('span');
+    span.className = 'twpx-checkbox-span';
+    span.textContent = labelText;
     
     // Собираем структуру
-    container.appendChild(customBox);
+    label.appendChild(customBox);
+    label.appendChild(span);
+
     container.appendChild(label);
+
+    if (errorElement) container.appendChild(errorElement);
+    if (descriptionElement) container.appendChild(descriptionElement);
     
     wrapper.appendChild(nativeCheckbox);
     wrapper.appendChild(container);

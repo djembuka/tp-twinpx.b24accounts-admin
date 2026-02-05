@@ -19,7 +19,7 @@
   padding: 0;
 }
 
-.twpx-checkbox-container {
+.twpx-checkbox-label {
   display: flex;
   align-items: flex-start;
   gap: 16px;
@@ -75,21 +75,21 @@
   outline-offset: 2px;
 }
 
-.twpx-checkbox-container:hover {
+.twpx-checkbox-label:hover {
   border: 1px solid var(--twpx-input-border-focus, #2900E0);
 }
 
-.twpx-checkbox-container:hover .twpx-checkbox__box:not(.disabled) {
+.twpx-checkbox-label:hover .twpx-checkbox__box:not(.disabled) {
   border-color: var(--twpx-checkbox-border-hover, #2900E0);
 }
 
 /* Состояние disabled */
-.twpx-checkbox-container.disabled {
+.twpx-checkbox-label.disabled {
   pointer-events: none;
   opacity: 0.6;
 }
 
-.twpx-checkbox-container.disabled .twpx-checkbox__box {
+.twpx-checkbox-label.disabled .twpx-checkbox__box {
   background: var(--twpx-checkbox-background-disabled, #F5F5F5);
   border-color: var(--twpx-checkbox-border-disabled, #D9D9D9);
 }
@@ -99,19 +99,24 @@
   border-color: var(--twpx-checkbox-border-disabled-checked, #B3B3B3);
 }
 
-.twpx-checkbox-container.disabled .twpx-checkbox__check {
+.twpx-checkbox-label.disabled .twpx-checkbox__check {
   color: var(--twpx-checkbox-check-disabled-color, #FFFFFF);
 }
 
-.twpx-checkbox-container.disabled .twpx-checkbox-label {
+.twpx-checkbox-label.disabled .twpx-checkbox-span {
   color: var(--twpx-checkbox-text-disabled, #8C8C8C);
 }
 
+.twpx-checkbox-label.disabled .twpx-url-input-description,
+.twpx-checkbox-label.disabled .twpx-url-input-error {
+  color: var(--twpx-input-text-disable, #919191);
+}
+
 /* Состояние invalid */
-.twpx-checkbox-container.invalid {
+.twpx-checkbox-container.invalid .twpx-checkbox-label {
   background: var(--twpx-checkbox-background-error, #FFF2F2);
 }
-.twpx-checkbox-container.invalid:hover {
+.twpx-checkbox-container.invalid:hover .twpx-checkbox-label {
   border: 1px solid var(--twpx-input-border-error, #F00);
 }
 .twpx-checkbox-container.invalid:hover .twpx-checkbox__box:not(.disabled) {
@@ -134,7 +139,7 @@
 }
 
 /* Label стили */
-.twpx-checkbox-label {
+.twpx-checkbox-span {
   user-select: none;
   margin: 0;
   padding-top: 2px;
@@ -148,12 +153,12 @@
     line-height: 16px; /* 100% */
 }
 
-.twpx-checkbox-container:hover .twpx-checkbox-label {
+.twpx-checkbox-label:hover .twpx-checkbox-span {
   color: var(--twpx-checkbox-text-hover, #000000);
 }
 
 /* Индикатор required */
-.twpx-checkbox-label.required::after {
+.twpx-checkbox-span.required::after {
   content: "*";
   color: var(--twpx-checkbox-required-color, #FF4D4F);
   margin-left: 4px;
@@ -173,4 +178,24 @@
 .twpx-checkbox-input.indeterminate .twpx-checkbox__check path {
   d: path("M6 12H14");
   stroke-width: 2;
+}
+
+.twpx-checkbox-error {
+  margin: 8px 0 0 16px;
+  color: var(--twpx-input-text-error, #F00);
+  font-family: Arial;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 10px;
+}
+
+.twpx-checkbox-description {
+  margin: 8px 0 0 16px;
+  color: var(--twpx-input-text-default, #000);
+  font-family: Arial;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 10px;
 }
