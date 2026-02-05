@@ -29,6 +29,8 @@
   padding: 15px;
   border: 1px solid var(--twpx-input-background-default, #F5F9FF);;
   border-radius: 8px;
+  -webkit-transition: border-color .2s ease;
+  transition: border-color .2s ease;
 }
 
 .twpx-checkbox__box {

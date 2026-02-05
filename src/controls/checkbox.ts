@@ -44,7 +44,7 @@ export class CheckboxInput {
       throw new Error('Input элемент типа checkbox не найден');
     }
     
-    const id = checkboxElement.id || `checkbox-${Date.now()}`;
+    const id = checkboxElement.id || `checkbox-${Math.round(Math.random() * 10000)}`;
     checkboxElement.id = id;
     
     const labelText = labelElement?.textContent || 'Checkbox';
