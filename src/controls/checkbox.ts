@@ -14,6 +14,8 @@ export class CheckboxInput {
   // Состояния
   private isChecked = false;
   private isIndeterminate = false;
+  private isInvalid = false;
+  private isDisabled = false;
 
   constructor(wrapperElement: HTMLDivElement) {
     this.wrapper = wrapperElement;
@@ -38,6 +40,8 @@ export class CheckboxInput {
     // Инициализируем состояния
     this.isChecked = this.nativeCheckbox.checked;
     this.isIndeterminate = this.nativeCheckbox.indeterminate;
+    this.isInvalid = this.wrapper.classList.contains('invalid');
+    this.isDisabled = this.wrapper.classList.contains('disabled');
     
     this.init();
   }
@@ -119,6 +123,17 @@ export class CheckboxInput {
     
     // Для label клика
     this.container.addEventListener('click', this.handleLabelClick.bind(this));
+
+    if (this.isInvalid) {
+      this.setInvalid(true);
+    }
+
+    if (this.isDisabled) {
+      this.setDisabled(true);
+    }
+
+    this.wrapper.removeAttribute('data-iconspath');
+    this.wrapper.classList.remove('invalid', 'disabled');
   }
 
   private handleClick(event: MouseEvent): void {
@@ -182,18 +197,18 @@ export class CheckboxInput {
 
   private updateVisualState(): void {
     // Убираем все классы состояний
-    this.wrapper.classList.remove('checked', 'indeterminate', 'invalid', 'disabled');
+    this.container.classList.remove('checked', 'indeterminate', 'invalid', 'disabled');
     
     // Добавляем соответствующие классы
     if (this.isIndeterminate) {
-      this.wrapper.classList.add('indeterminate');
+      this.container.classList.add('indeterminate');
       
       // Меняем SVG для indeterminate состояния
       const path = this.checkIcon.querySelector('path')!;
       path.setAttribute('d', 'M6 12H14');
       
     } else if (this.isChecked) {
-      this.wrapper.classList.add('checked');
+      this.container.classList.add('checked');
       
       // Возвращаем обычную галочку
       const path = this.checkIcon.querySelector('path')!;
@@ -202,7 +217,7 @@ export class CheckboxInput {
     
     // Состояние disabled из нативного checkbox
     if (this.nativeCheckbox.disabled) {
-      this.wrapper.classList.add('disabled');
+      this.container.classList.add('disabled');
     }
     
     // Состояние required
@@ -292,7 +307,7 @@ export class CheckboxInput {
   }
 
   public setInvalid(invalid: boolean): void {
-    this.wrapper.classList.toggle('invalid', invalid);
+    this.container.classList.toggle('invalid', invalid);
     
     if (invalid) {
       this.customBox.setAttribute('aria-invalid', 'true');

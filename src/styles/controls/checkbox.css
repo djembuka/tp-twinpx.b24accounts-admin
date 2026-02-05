@@ -59,12 +59,12 @@
 }
 
 /* Состояние checked */
-.twpx-checkbox-input.checked .twpx-checkbox__box {
+.twpx-checkbox-container.checked .twpx-checkbox__box {
   background: var(--twpx-checkbox-background-checked, #2900E0);
   border-color: var(--twpx-checkbox-border-checked, #2900E0);
 }
 
-.twpx-checkbox-input.checked .twpx-checkbox__check {
+.twpx-checkbox-container.checked .twpx-checkbox__check {
   transform: translateY(0);
   opacity: 1;
 }
@@ -84,46 +84,50 @@
 }
 
 /* Состояние disabled */
-.twpx-checkbox-input.disabled {
+.twpx-checkbox-container.disabled {
   pointer-events: none;
   opacity: 0.6;
 }
 
-.twpx-checkbox-input.disabled .twpx-checkbox__box {
+.twpx-checkbox-container.disabled .twpx-checkbox__box {
   background: var(--twpx-checkbox-background-disabled, #F5F5F5);
   border-color: var(--twpx-checkbox-border-disabled, #D9D9D9);
 }
 
-.twpx-checkbox-input.disabled.checked .twpx-checkbox__box {
+.twpx-checkbox-container.disabled.checked .twpx-checkbox__box {
   background: var(--twpx-checkbox-background-disabled-checked, #B3B3B3);
   border-color: var(--twpx-checkbox-border-disabled-checked, #B3B3B3);
 }
 
-.twpx-checkbox-input.disabled .twpx-checkbox__check {
+.twpx-checkbox-container.disabled .twpx-checkbox__check {
   color: var(--twpx-checkbox-check-disabled-color, #FFFFFF);
 }
 
-.twpx-checkbox-input.disabled .twpx-checkbox-label {
+.twpx-checkbox-container.disabled .twpx-checkbox-label {
   color: var(--twpx-checkbox-text-disabled, #8C8C8C);
 }
 
 /* Состояние invalid */
-.twpx-checkbox-input.invalid .twpx-checkbox__box {
-  border-color: var(--twpx-checkbox-border-error, #FF4D4F);
+.twpx-checkbox-container.invalid {
   background: var(--twpx-checkbox-background-error, #FFF2F2);
 }
-
-.twpx-checkbox-input.invalid.checked .twpx-checkbox__box {
-  background: var(--twpx-checkbox-background-error-checked, #FF4D4F);
-  border-color: var(--twpx-checkbox-border-error-checked, #FF4D4F);
+.twpx-checkbox-container.invalid:hover {
+  border: 1px solid var(--twpx-input-border-error, #F00);
 }
-
-.twpx-checkbox-input.invalid .twpx-checkbox-label {
-  color: var(--twpx-checkbox-text-error, #FF4D4F);
+.twpx-checkbox-container.invalid:hover .twpx-checkbox__box:not(.disabled) {
+  border-color: var(--twpx-input-border-error, #F00);
+}
+.twpx-checkbox-container.invalid .twpx-checkbox__box {
+  border-color: var(--twpx-input-border-error, #F00);
+  background: var(--twpx-checkbox-background-error, #FFF2F2);
+}
+.twpx-checkbox-container.invalid.checked .twpx-checkbox__box {
+  background: var(--twpx-input-border-error, #F00);
+  border-color: var(--twpx-input-border-error, #F00);
 }
 
 /* Анимация для unchecked (исчезновение вниз) */
-.twpx-checkbox-input:not(.checked) .twpx-checkbox__check {
+.twpx-checkbox-container:not(.checked) .twpx-checkbox__check {
   transform: translateY(-100%);
   opacity: 0;
   transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
