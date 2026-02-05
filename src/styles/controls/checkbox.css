@@ -143,7 +143,7 @@
 .twpx-checkbox-span {
   user-select: none;
   margin: 0;
-  padding-top: 2px;
+  padding-top: 4px;
   cursor: pointer;
   transition: color 0.2s ease;
   color: var(--twpx-input-text-default, #000);
