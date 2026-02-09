@@ -231,6 +231,7 @@ export class SelectDropdown {
     this.isOpen = false;
     this.container.classList.remove('open');
     this.customInput.setAttribute('aria-expanded', 'false');
+    this.setInvalidState(false);
   }
 
   private handleClickOutside(event: MouseEvent): void {
