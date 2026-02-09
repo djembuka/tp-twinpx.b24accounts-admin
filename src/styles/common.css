@@ -5,6 +5,7 @@
 }
 #twpxB24aAdmin * {
     box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
 }
 .twpx-wrapper {
     display: grid;
