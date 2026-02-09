@@ -47,6 +47,8 @@ export class SelectDropdown {
 
     const selectElement = wrapperElement.querySelector('select');
     const labelElement = wrapperElement.querySelector('label');
+    const errorElement = wrapperElement.querySelector('.twpx-select-error');
+    const descriptionElement = wrapperElement.querySelector('.twpx-select-description');
 
     if (!selectElement) {
         throw Error('Не найдет select внутри twpx-select');
@@ -135,6 +137,9 @@ export class SelectDropdown {
     container.appendChild(label);
     container.appendChild(lockIcon);
     container.appendChild(dropdown);
+
+    if (errorElement) container.appendChild(errorElement);
+    if (descriptionElement) container.appendChild(descriptionElement);
     
     wrapper.appendChild(nativeSelect);
     wrapper.appendChild(container);

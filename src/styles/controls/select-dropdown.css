@@ -190,3 +190,28 @@
 .twpx-select-container.disabled .twpx-select-lock {
   display: block;
 }
+
+.twpx-select-container.disabled .twpx-select-description,
+.twpx-select-container.disabled .twpx-select-error {
+  color: var(--twpx-input-text-disable, #919191);
+}
+
+.twpx-select-error {
+  margin: 8px 0 0 16px;
+  color: var(--twpx-input-text-error, #F00);
+  font-family: Arial;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 10px;
+}
+
+.twpx-select-description {
+  margin: 8px 0 0 16px;
+  color: var(--twpx-input-text-default, #000);
+  font-family: Arial;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 10px;
+}
