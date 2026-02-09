@@ -116,7 +116,8 @@
   color: var(--twpx-input-text-disable, #919191);
 }
 
-.twpx-checkbox-container.disabled .twpx-checkbox-description {
+.twpx-checkbox-container.disabled .twpx-checkbox-description,
+.twpx-checkbox-container.disabled .twpx-checkbox-error {
   color: var(--twpx-input-text-disable, #919191);
 }
 
