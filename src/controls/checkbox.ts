@@ -14,8 +14,6 @@ export class CheckboxInput {
   // Состояния
   private isChecked = false;
   private isIndeterminate = false;
-  private isInvalid = false;
-  private isDisabled = false;
 
   constructor(wrapperElement: HTMLDivElement) {
     this.wrapper = wrapperElement;
@@ -40,8 +38,6 @@ export class CheckboxInput {
     // Инициализируем состояния
     this.isChecked = this.nativeCheckbox.checked;
     this.isIndeterminate = this.nativeCheckbox.indeterminate;
-    this.isInvalid = this.wrapper.classList.contains('invalid');
-    this.isDisabled = this.wrapper.classList.contains('disabled');
     
     this.init();
   }
@@ -129,6 +125,10 @@ export class CheckboxInput {
   }
 
   private init(): void {
+    const isInvalid = this.wrapper.classList.contains('invalid');
+    const isDisabled = this.wrapper.classList.contains('disabled');
+    this.wrapper.classList.remove('invalid', 'disabled');
+
     // Устанавливаем начальное состояние
     this.updateVisualState();
     
@@ -142,16 +142,15 @@ export class CheckboxInput {
     // Для label клика
     this.container.addEventListener('click', this.handleLabelClick.bind(this));
 
-    if (this.isInvalid) {
+    this.wrapper.removeAttribute('data-iconspath');
+    
+    if (isInvalid) {
       this.setInvalid(true);
     }
 
-    if (this.isDisabled) {
+    if (isDisabled) {
       this.setDisabled(true);
     }
-
-    this.wrapper.removeAttribute('data-iconspath');
-    this.wrapper.classList.remove('invalid', 'disabled');
   }
 
   private handleClick(event: MouseEvent): void {
