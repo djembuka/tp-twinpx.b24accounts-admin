@@ -153,6 +153,19 @@ export class SelectDropdown {
 
   private init(): void {
     // Инициализируем состояние
+    const isInvalid = this.wrapper.classList.contains('invalid');
+    const isDisabled = this.wrapper.classList.contains('disabled');    
+
+    if (isInvalid) {
+      this.setInvalidState(true);
+    }
+
+    if (isDisabled) {
+      this.setDisabledState(true);
+    }
+
+    this.wrapper.classList.remove('invalid', 'disabled');
+
     if (this.nativeSelect.value) {
       this.setFilledState(true);
     }
