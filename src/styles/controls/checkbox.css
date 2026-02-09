@@ -155,7 +155,7 @@
 .twpx-checkbox-span {
   user-select: none;
   margin: 0;
-  padding-top: 4px;
+  padding-top: 5px;
   cursor: pointer;
   transition: color 0.2s ease;
   color: var(--twpx-input-text-default, #000);
@@ -163,7 +163,7 @@
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
-    line-height: 16px; /* 100% */
+    line-height: 1;
 }
 
 .twpx-checkbox-label:hover .twpx-checkbox-span {
@@ -200,7 +200,7 @@
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
-  line-height: 10px;
+  line-height: .83;
 }
 
 .twpx-checkbox-description {
@@ -210,5 +210,5 @@
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
-  line-height: 10px;
+  line-height: .83;
 }
