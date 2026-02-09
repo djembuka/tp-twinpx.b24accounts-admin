@@ -9,7 +9,6 @@ export class SelectDropdown {
   private options: NodeListOf<HTMLDivElement>;
   
   private iconPaths = {
-    selectIcon: 'images/select-icon.svg',
     arrowDown: 'images/arrow-icon.svg',
     lockIcon: 'images/lock-icon.svg'
   };
