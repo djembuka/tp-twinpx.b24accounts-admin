@@ -24,7 +24,7 @@ export class CheckboxInput {
     // this.iconsPath = this.wrapper.getAttribute('data-iconspath') ?? '';
     
     // Проверяем, нужна ли генерация структуры
-    const needsGeneration = wrapperElement.classList.contains('twpx-checkbox-input') && 
+    const needsGeneration = wrapperElement.classList.contains('twpx-checkbox') && 
                           !wrapperElement.querySelector('.twpx-checkbox-container');
     
     if (needsGeneration) {

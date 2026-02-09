@@ -22,7 +22,7 @@ window.addEventListener('DOMContentLoaded', () => {
         new SelectDropdown(wrapper as HTMLDivElement);
     });
 
-    document.querySelectorAll('.twpx-checkbox-input').forEach((wrapper) => {
+    document.querySelectorAll('.twpx-checkbox').forEach((wrapper) => {
         new CheckboxInput(wrapper as HTMLDivElement);
     });
 });
