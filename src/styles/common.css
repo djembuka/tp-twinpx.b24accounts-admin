@@ -1,0 +1,14 @@
+#twpxB24aAdmin * {
+    box-sizing: border-box;
+}
+.twpx-wrapper {
+    display: grid;
+    padding: 32px 32px 196px 32px;
+    gap: 32px;
+    border-radius: 32px 32px 0 0;
+    background: var(--Base-White, #FFF);
+}
+.twpx-content {
+    display: grid;
+    gap: 32px;
+}

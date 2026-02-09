@@ -1,0 +1,161 @@
+.twpx-url-input {
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+.twpx-url-input * {
+  box-sizing: border-box;
+}
+
+.twpx-url-input-container {
+  position: relative;
+}
+
+.twpx-url-input__input {
+  color: var(--twpx-input-text-default, #000);
+  width: 100%;
+  padding: 24px calc(16px + 32px + 16px) 8px calc(16px + 32px + 16px);
+  font-size: 16px;
+  border-radius: 8px;
+  background: var(--twpx-input-background-default, #F5F9FF);
+  border: 1px solid var(--twpx-input-background-default, #F5F9FF);
+  height: 64px;
+  -webkit-transition: border-color 0.2s ease;
+  transition: border-color 0.2s ease;
+}
+
+.twpx-url-input-container:hover .twpx-url-input__input {
+  border-color: var(--twpx-input-border-focus, #2900E0);
+}
+
+.twpx-url-input__input:focus {
+  outline: none;
+}
+
+.twpx-url-input-label {
+  position: absolute;
+  left: calc(16px + 32px + 16px);
+  top: 22px;
+  font-size: 16px;
+  color: var(--twpx-input-text-default, #000);;
+  background-color: transparent;
+  pointer-events: none;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  margin: 0;
+  padding: 0;
+}
+
+.twpx-url-input-icon {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 10;
+}
+
+.twpx-url-input-clear,
+.twpx-url-input-clear-invalid {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.twpx-url-input-lock {
+    display: none;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 10;
+}
+
+/* Состояние когда поле в фокусе или имеет значение */
+.twpx-url-input__input:focus + .twpx-url-input-label,
+.twpx-url-input-container.filled .twpx-url-input-label {
+  color: var(--twpx-input-text-input-name, #848C95);
+  top: 16px;
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+  font-size: 12px;
+}
+
+.twpx-url-input-clear,
+.twpx-url-input-clear-invalid {
+  opacity: 0;
+  pointer-events: none;
+  -webkit-transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease;
+}
+
+.twpx-url-input-container.filled:not(.invalid):hover .twpx-url-input-clear {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Состояние ошибки */
+.twpx-url-input-container.invalid .twpx-url-input__input {
+  background: var(--twpx-input-background-error, #FFF2F2);
+  color: var(--twpx-input-text-error, #F00);
+}
+
+.twpx-url-input-container.invalid:hover .twpx-url-input__input {
+  border-color: var(--twpx-input-border-error, #F00);
+}
+
+.twpx-url-input-container.invalid .twpx-url-input-label {
+  color: var(--twpx-input-text-error, #F00);
+}
+
+/* Disabled */
+.twpx-url-input-container.disabled {
+    pointer-events: none;
+}
+
+.twpx-url-input-container.disabled .twpx-url-input__input {
+  background-color: var(--twpx-input-background-disable, #F9F9F9);
+  pointer-events: none;
+  color: var(--twpx-input-text-disable, #919191);
+}
+
+.twpx-url-input-container.disabled .twpx-url-input-label {
+  color: var(--twpx-input-text-disable, #919191);
+}
+
+.twpx-url-input-container.disabled .twpx-url-input-lock {
+    display: block;
+}
+
+.twpx-url-input-container.disabled .twpx-url-input-clear {
+    display: none;
+}
+
+.twpx-url-input-container.disabled .twpx-url-input-description,
+.twpx-url-input-container.disabled .twpx-url-input-error {
+  color: var(--twpx-input-text-disable, #919191);
+}
+
+.twpx-url-input-container.filled.invalid:hover .twpx-url-input-clear-invalid {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.twpx-url-input-error {
+  margin: 8px 0 0 16px;
+  color: var(--twpx-input-text-error, #F00);
+  font-family: Arial;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 10px;
+}
+
+.twpx-url-input-description {
+  margin: 8px 0 0 16px;
+  color: var(--twpx-input-text-default, #000);
+  font-family: Arial;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 10px;
+}

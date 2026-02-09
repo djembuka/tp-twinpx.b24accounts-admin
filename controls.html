@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controls</title>
+</head>
+<body>
+    <div style="max-width: 600px; margin: 20px auto; display: grid; gap: 32px;">
+
+        <div class="twpx-url-input" data-iconspath="images/">
+            <input name="PORTAL_URL" type="url" value="">
+            <label>Адрес портала Битрикс24</label>
+        </div>
+
+        <div class="twpx-url-input" data-iconspath="images/">
+            <input name="PORTAL_URL" type="url" value="http://google.com">
+            <label>Адрес портала Битрикс24</label>
+            <div class="twpx-url-input-description">Описание поля</div>
+        </div>
+
+        <div class="twpx-url-input invalid" data-iconspath="images/">
+            <input name="PORTAL_URL" type="url" value="http://google.com">
+            <label>Адрес портала Битрикс24</label>
+        </div>
+
+        <div class="twpx-url-input disabled" data-iconspath="images/">
+            <input name="PORTAL_URL" type="url" value="http://google.com">
+            <label>Адрес портала Битрикс24</label>
+        </div>
+
+        <div class="twpx-url-input invalid" data-iconspath="images/">
+            <input name="PORTAL_URL" type="url" value="http://google.com">
+            <label>Адрес портала Битрикс24</label>
+            <div class="twpx-url-input-error">Текст ошибки</div>
+            <div class="twpx-url-input-description">Описание поля</div>
+        </div>
+
+        <div class="twpx-url-input invalid disabled" data-iconspath="images/">
+            <input name="PORTAL_URL" type="url" value="">
+            <label>Адрес портала Битрикс24</label>
+            <div class="twpx-url-input-description">Описание поля</div>
+        </div>
+
+        <div class="twpx-checkbox" data-iconspath="images/">
+            <input type="checkbox" name="TYPE" value="one">
+            <label class="twpx-checkbox-label">Принимаю условия соглашения</label>
+        </div>
+
+        <div class="twpx-checkbox invalid" data-iconspath="images/">
+            <input type="checkbox" name="TYPE" value="one">
+            <label class="twpx-checkbox-label">Принимаю условия соглашения</label>
+            <div class="twpx-checkbox-error">Текст ошибки</div>
+        </div>
+
+        <div class="twpx-checkbox invalid" data-iconspath="images/">
+            <input type="checkbox" name="TYPE" value="one" checked>
+            <label class="twpx-checkbox-label">Принимаю условия соглашения</label>
+        </div>
+
+        <div class="twpx-checkbox disabled" data-iconspath="images/">
+            <input type="checkbox" name="TYPE" value="one">
+            <label class="twpx-checkbox-label">Принимаю условия соглашения</label>
+            <div class="twpx-checkbox-description">Описание поля</div>
+        </div>
+
+        <div class="twpx-checkbox disabled" data-iconspath="images/">
+            <input type="checkbox" name="TYPE" value="one" checked>
+            <label class="twpx-checkbox-label">Принимаю условия соглашения</label>
+            <div class="twpx-checkbox-error">Текст ошибки</div>
+            <div class="twpx-checkbox-description">Описание поля</div>
+        </div>
+
+        <div class="twpx-select" data-iconspath="images/">
+            <label>Название поля</label>
+            <select name="CONTACT_TYPE">
+                <option value="option1">Опция 1</option>
+                <option value="option2">Опция 2</option>
+                <option value="option3">Опция 3</option>
+            </select>
+            <div class="twpx-select-error">Текст ошибки</div>
+            <div class="twpx-select-description">Описание поля</div>
+        </div>
+
+        <div class="twpx-select invalid" data-iconspath="images/">
+            <label>Название поля</label>
+            <select name="CONTACT_TYPE">
+                <option value="option1">Опция 1</option>
+                <option value="option2">Опция 2</option>
+                <option value="option3">Опция 3</option>
+            </select>
+            <div class="twpx-select-error">Текст ошибки</div>
+            <div class="twpx-select-description">Описание поля</div>
+        </div>
+
+        <div class="twpx-select disabled" data-iconspath="images/">
+            <label>Название поля</label>
+            <select name="CONTACT_TYPE">
+                <option value="option1">Опция 1</option>
+                <option value="option2">Опция 2</option>
+                <option value="option3">Опция 3</option>
+            </select>
+            <div class="twpx-select-error">Текст ошибки</div>
+            <div class="twpx-select-description">Описание поля</div>
+        </div>
+
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

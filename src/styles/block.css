@@ -1,0 +1,60 @@
+.twpx-block {
+    display: grid;
+    padding: 32px;
+    gap: 16px;
+    border-radius: 16px;
+    border: 1px solid var(--twpx-blocks-border-grey, #E8E8ED);
+}
+.twpx-block__title {
+    color: #000;
+    font-family: Arial;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px; /* 100% */
+}
+.twpx-block__text {
+    color: #000;
+    font-family: Arial;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 125% */
+}
+.twpx-button {
+    display: flex;
+    height: var(--twpx-button-size-l, 64px);
+    padding: var(--twpx-button-padding-l, 16px);
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    background: var(--twpx-button-color-primary, #2900E0);
+    -webkit-transition: opacity .2s ease;
+    transition: opacity .2s ease;
+    cursor: pointer;
+    color: var(--twpx-button-text-white, #FFF);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 16px; /* 100% */
+}
+button.twpx-button {
+    border: none;
+}
+.twpx-button:hover {
+    opacity: 0.7;
+}
+.twpx-button .twpx-loader {
+    display: none;
+}
+.twpx-button.twpx-b24a--loading span {
+    display: none;
+}
+.twpx-button.twpx-button--inverse {
+    background: var(--twpx-button-color-secondaty, #F20089);
+}
+.twpx-button.twpx-button--light {
+    color: var(--twpx-button-text-blue, #2900E0);
+    background: var(--twpx-button-color-light, #EEF1FF);
+}

@@ -1,0 +1,33 @@
+.twpx-message {
+    display: flex;
+    padding: 16px;
+    align-items: flex-start;
+    gap: 8px;
+    border-radius: 8px;
+    background: #F22;
+}
+.twpx-message__text {
+    color: #FFF;
+    font-family: Arial;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 2px;
+}
+
+/* Error */
+.twpx-message.twpx-message--error {
+    background: #F22;
+}
+.twpx-message--error .twpx-message__text {
+    color: #FFF;
+}
+
+/* Info */
+.twpx-message.twpx-message--info {
+    background: #F4F6F8;
+}
+.twpx-message--info .twpx-message__text {
+    color: #000;
+}
