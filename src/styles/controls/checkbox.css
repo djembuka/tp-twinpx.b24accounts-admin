@@ -95,7 +95,8 @@
   pointer-events: none;
 }
 .twpx-checkbox-container.disabled .twpx-checkbox-label {
-  background-color: var(--twpx-input-background-disable, #F9F9F9)
+  background-color: var(--twpx-input-background-disable, #F9F9F9);
+  padding-right: calc(16px + 32px + 16px);
 }
 
 .twpx-checkbox-container.disabled .twpx-checkbox__box {
