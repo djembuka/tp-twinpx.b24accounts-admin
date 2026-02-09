@@ -7,10 +7,14 @@ export class SelectDropdown {
   private label: HTMLLabelElement;
   private dropdown: HTMLDivElement;
   private options: NodeListOf<HTMLDivElement>;
+  private iconsPath: string;
+  private arrowIcon: HTMLImageElement | null;
   
   private iconPaths = {
-    arrowDown: 'images/arrow-icon.svg',
-    lockIcon: 'images/lock-icon.svg'
+    arrowIcon: 'arrow-icon.svg',
+    arrowInvalidIcon: 'arrow-invalid-icon.svg',
+    arrowDisabledIcon: 'arrow-disabled-icon.svg',
+    lockIcon: 'lock-icon.svg'
   };
   
   private isOpen = false;
@@ -19,6 +23,8 @@ export class SelectDropdown {
 
   constructor(wrapperElement: HTMLDivElement) {
     this.wrapper = wrapperElement;
+    this.iconsPath = this.wrapper.getAttribute('data-iconspath') ?? '';
+    this.arrowIcon = document.createElement('img');
     
     // Проверяем, нужна ли генерация структуры
     const needsGeneration = wrapperElement.classList.contains('twpx-select') && 
@@ -37,7 +43,7 @@ export class SelectDropdown {
     this.label = this.wrapper.querySelector('.twpx-select-label')!;
     this.dropdown = this.wrapper.querySelector('.twpx-select-dropdown')!;
     this.options = this.dropdown.querySelectorAll('.twpx-select-option');
-    
+
     this.init();
   }
 
@@ -85,15 +91,15 @@ export class SelectDropdown {
     valueDisplay.className = 'twpx-select__value';
     valueDisplay.textContent = nativeSelect.value || '';
     
-    const arrow = document.createElement('img');
-    arrow.className = 'twpx-select__arrow';
-    arrow.src = this.iconPaths.arrowDown;
-    arrow.alt = '';
-    arrow.width = 24;
-    arrow.height = 24;
+    this.arrowIcon = document.createElement('img');
+    this.arrowIcon.className = 'twpx-select__arrow';
+    this.arrowIcon.src = `${this.iconsPath}${this.iconPaths.arrowIcon}`;
+    this.arrowIcon.alt = '';
+    this.arrowIcon.width = 24;
+    this.arrowIcon.height = 24;
     
     customInput.appendChild(valueDisplay);
-    customInput.appendChild(arrow);
+    customInput.appendChild(this.arrowIcon);
     
     // Label
     const label = document.createElement('label');
@@ -103,7 +109,7 @@ export class SelectDropdown {
     // Иконки    
     const lockIcon = document.createElement('img');
     lockIcon.className = 'twpx-select-lock';
-    lockIcon.src = this.iconPaths.lockIcon;
+    lockIcon.src = `${this.iconsPath}${this.iconPaths.lockIcon}`;
     lockIcon.alt = '';
     lockIcon.width = 32;
     lockIcon.height = 32;
@@ -338,16 +344,25 @@ export class SelectDropdown {
   }
 
   public setDisabledState(disabled: boolean): void {
-    this.container.classList.toggle('disabled', disabled);
-    this.nativeSelect.disabled = disabled;
+    if (this.container)
+      this.container.classList.toggle('disabled', disabled);
+
+    if (this.nativeSelect)
+      this.nativeSelect.disabled = disabled;
+
+    if (this.arrowIcon)
+      this.arrowIcon.src = `${this.iconsPath}${disabled ? this.iconPaths.arrowDisabledIcon : this.iconPaths.arrowIcon}`;
     
-    if (disabled) {
+    if (disabled)
       this.closeDropdown();
-    }
   }
 
   private setInvalidState(invalid: boolean): void {
-    this.container.classList.toggle('invalid', invalid);
+    if (this.container)
+      this.container.classList.toggle('invalid', invalid);
+
+    if (this.arrowIcon)
+      this.arrowIcon.src = `${this.iconsPath}${invalid ? this.iconPaths.arrowInvalidIcon : this.iconPaths.arrowIcon}`;
   }
 
   public clearValidationState(): void {

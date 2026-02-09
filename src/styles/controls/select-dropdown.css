@@ -91,7 +91,7 @@
   display: none;
   position: absolute;
   top: 16px;
-  right: 16px;
+  right: calc(16px + 24px + 16px);
   z-index: 10;
 }
 
@@ -168,10 +168,6 @@
   border-color: var(--twpx-input-border-error, #F00);
 }
 
-.twpx-select-container.invalid .twpx-select__arrow {
-  filter: brightness(0) saturate(100%) invert(19%) sepia(97%) saturate(5140%) hue-rotate(359deg) brightness(110%) contrast(116%);
-}
-
 /* Состояние disabled */
 .twpx-select-container.disabled {
   pointer-events: none;
@@ -181,6 +177,7 @@
   background-color: var(--twpx-input-background-disable, #F9F9F9);
   color: var(--twpx-input-text-disable, #919191);
   cursor: not-allowed;
+  padding-right: calc(16px + 24px + 16px + 32px + 16px);
 }
 
 .twpx-select-container.disabled .twpx-select-label {
