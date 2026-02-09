@@ -117,7 +117,7 @@
 /* Dropdown стили */
 .twpx-select-dropdown {
   position: absolute;
-  top: 100%;
+  top: 64px;
   left: 0;
   right: 0;
   max-height: 200px;
