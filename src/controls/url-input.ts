@@ -21,8 +21,6 @@ export class UrlInput {
   constructor(wrapperElement: HTMLDivElement) {
     // Сохраняем ссылку на обертку
     this.wrapper = wrapperElement;
-    const isInvalid = this.wrapper.classList.contains('invalid');
-    const isDisabled = this.wrapper.classList.contains('disabled');
     this.iconsPath = this.wrapper.getAttribute('data-iconspath') ?? '';
 
     this.clearMouseDown = false;
@@ -50,14 +48,6 @@ export class UrlInput {
     
     // Инициализация
     this.init();
-
-    if (isInvalid) {
-      this.setInvalidState(true);
-    }
-
-    if (isDisabled) {
-      this.setDisabledState(true);
-    }
   }
 
   /**
@@ -141,7 +131,17 @@ export class UrlInput {
     return wrapper;
   }
   
-  private init(): void {    
+  private init(): void {   
+    const isInvalid = this.wrapper.classList.contains('invalid');
+    if (isInvalid) {
+      this.setInvalidState(true);
+    }
+    
+    const isDisabled = this.wrapper.classList.contains('disabled');
+    if (isDisabled) {
+      this.setDisabledState(true);
+    }
+
     // Проверяем начальное значение и устанавливаем класс если есть текст
     if (this.input.value.trim() !== '') {
       this.setFilledState(true);
