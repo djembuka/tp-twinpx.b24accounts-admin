@@ -5,13 +5,11 @@ export class CheckboxInput {
   private checkIcon: SVGElement;
   private container: HTMLLabelElement;
   private label: HTMLLabelElement;
-  // private span: HTMLSpanElement;
-  // private iconsPath: string;
-  // private iconsPath: string;
+  private iconsPath: string;
 
-  // private iconPaths = {
-  //   lockIcon: 'lock-icon.svg'
-  // };
+  private iconPaths = {
+    lockIcon: 'lock-icon.svg'
+  };
   
   // Состояния
   private isChecked = false;
@@ -21,7 +19,7 @@ export class CheckboxInput {
 
   constructor(wrapperElement: HTMLDivElement) {
     this.wrapper = wrapperElement;
-    // this.iconsPath = this.wrapper.getAttribute('data-iconspath') ?? '';
+    this.iconsPath = this.wrapper.getAttribute('data-iconspath') ?? '';
     
     // Проверяем, нужна ли генерация структуры
     const needsGeneration = wrapperElement.classList.contains('twpx-checkbox') && 
@@ -98,6 +96,13 @@ export class CheckboxInput {
     path.setAttribute('stroke-width', '2');
     path.setAttribute('stroke-linecap', 'round');
     path.setAttribute('stroke-linejoin', 'round');
+
+    const lockIcon = document.createElement('img');
+    lockIcon.className = 'twpx-checkbox-lock';
+    lockIcon.src = `${this.iconsPath}${this.iconPaths.lockIcon}`;
+    lockIcon.width = 32;
+    lockIcon.height = 32;
+    lockIcon.alt = '';
     
     checkIcon.appendChild(path);
     customBox.appendChild(checkIcon);
@@ -110,6 +115,7 @@ export class CheckboxInput {
     // Собираем структуру
     label.appendChild(customBox);
     label.appendChild(span);
+    label.appendChild(lockIcon);
 
     container.appendChild(label);
 

@@ -84,6 +84,13 @@
 }
 
 /* Состояние disabled */
+.twpx-checkbox-lock {
+  display: none;
+  position: absolute;
+  top: 13px;
+  right: 16px;
+  z-index: 10;
+}
 .twpx-checkbox-container.disabled {
   pointer-events: none;
 }
@@ -111,6 +118,10 @@
 
 .twpx-checkbox-container.disabled .twpx-checkbox-description {
   color: var(--twpx-input-text-disable, #919191);
+}
+
+.twpx-checkbox-container.disabled .twpx-checkbox-lock {
+  display: block;
 }
 
 /* Состояние invalid */
