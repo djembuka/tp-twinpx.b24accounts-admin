@@ -1,5 +1,11 @@
+#twpxB24aAdmin {
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+}
 #twpxB24aAdmin * {
     box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
 }
 .twpx-wrapper {
     display: grid;

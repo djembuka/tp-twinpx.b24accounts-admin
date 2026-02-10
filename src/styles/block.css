@@ -11,7 +11,7 @@
     font-size: 20px;
     font-style: normal;
     font-weight: 700;
-    line-height: 20px; /* 100% */
+    line-height: 1; /* 100% */
 }
 .twpx-block__text {
     color: #000;
@@ -19,7 +19,7 @@
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
-    line-height: 20px; /* 125% */
+    line-height: 1.25; /* 125% */
 }
 .twpx-button {
     display: flex;
@@ -37,7 +37,7 @@
     font-size: 16px;
     font-style: normal;
     font-weight: 700;
-    line-height: 16px; /* 100% */
+    line-height: 1; /* 100% */
 }
 button.twpx-button {
     border: none;

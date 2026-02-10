@@ -200,7 +200,7 @@
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
-  line-height: 10px;
+  line-height: .83;
 }
 
 .twpx-select-description {
@@ -210,5 +210,5 @@
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
-  line-height: 10px;
+  line-height: .83;
 }
