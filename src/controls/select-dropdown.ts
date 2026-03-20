@@ -83,16 +83,7 @@ export class SelectDropdown {
     // Кастомный input
     const customInput = this.generateCustomInput();
     
-    const valueDisplay = document.createElement('span');
-    valueDisplay.className = 'twpx-select__value';
-
-    let valueOptionText: string = '';
-    options.forEach(o => {
-      if (o.getAttribute('value') === nativeSelect.value)
-          valueOptionText = o.textContent;
-    });
-
-    valueDisplay.textContent = valueOptionText;
+    const valueDisplay = this.generateValueDisplay(options, nativeSelect.value);
     
     this.arrowIcon = this.generateArrowIcon();
     
@@ -171,6 +162,21 @@ export class SelectDropdown {
         }
       }, 0);
     });
+  }
+  
+  private generateValueDisplay(options: NodeListOf<HTMLOptionElement>, value: string): HTMLSpanElement {
+    const valueDisplay = document.createElement('span');
+    valueDisplay.className = 'twpx-select__value';
+
+    let valueOptionText: string = '';
+    options.forEach(o => {
+      if (o.getAttribute('value') === value)
+          valueOptionText = o.textContent;
+    });
+
+    valueDisplay.textContent = valueOptionText;
+
+    return valueDisplay;
   }
 
   private generateArrowIcon(): HTMLImageElement {
